@@ -1,0 +1,152 @@
+https://www.youtube.com/watch?v=74ys-dT94mA nav bar example
+
+https://git.generalassemb.ly/SEIR-2-21-23/course-materials/blob/main/unit-3/week-1/d4-intro-spas-and-mern/4.1-intro-spas-and-mern-stack/README.md
+
+MERN: 
+React / Express / Mongo Combination
+
+1. % npm create vite@latest
+✔ Project name: … mern-infrastructure
+✔ Select a framework: › React
+✔ Select a variant: › JavaScript
+  cd mern-infrastructure
+  npm install
+2. % npm i
+3. % npm run build
+4. % npm i express morgan
+5. % touch server.js
+    const express = require('express');
+    const path = require('path');
+    const logger = require('morgan');
+    // require('dotenv').config();
+    // require('./config/database')
+
+    const app = express();
+
+    app.use(logger('dev'));
+
+    app.use(express.json());
+
+    app.use(express.static(path.join(__dirname, 'dist')));
+
+    app.get('/*', function(req, res) {
+    res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+    });
+
+
+    const port = process.env.PORT || 3000;
+
+    app.listen(port, function() {
+    console.log(`Express app running on port ${port}`)
+    });
+
+6. package.json: DELETE:
+    "type": "module", <-- this line needs to be deleted
+
+7. reorganize:
+A) src/App folder
+    move App.jsx and App.css into App folder
+B) PAGES vs COMPONENTS
+    Pages are a container of components
+    Organization: create two additional folders:
+    src/pages
+    src/components
+
+├── src
+    ├── assets
+    ├── components
+    ├── index.css
+    ├── main.jsx
+    └── pages
+        └── App
+            ├── App.css
+            └── App.jsx
+
+8. in vite.config.js:
+export default defineConfig({
+  plugins: [react()],
+  server: {
+    proxy: {
+      '/api': {
+        target: 'http://localhost:3000',
+        changeOrigin: true,
+      },
+    }
+  }
+})
+
+9. install react-router-dom to create routes in react
+    % npm i react-router-dom
+    in main.jsx:
+        import { BrowserRouter as Router } from 'react-router-dom';
+        
+        import App from '../src/pages/App/App'
+        .
+        .
+        .
+        <React.StrictMode>
+            <Router><App /></Router>
+        </React.StrictMode>
+10. in app.jsx:
+        import { Routes, Route } from 'react-router-dom';
+
+11. in app.jsx: delete:
+        import reactLogo from './assets/react.svg' <-- this line needs to be deleted
+        import viteLogo from '/vite.svg' <-- this line needs to be deleted
+
+12. % touch .gitignore
+13. 
+14. % npm i dotenv
+    % touch .env
+      -> in .gitignore -> node_modules, .env 
+
+15. % mkdir config controllers models routes
+16. % mkdir src/utilities
+17. % npm i mongoose
+18. % npm i bcrypt
+
+- - - - - - -
+
+Authorization
+1. in App.js, state of user can determine if routes are shown or Auth page is shown:
+    ...
+    return(
+      <main>
+        {userStatus ?
+            <>
+              <NavBar user={userStatus} setUser={setUserStatus}/>
+              <Routes>
+                  <Route path="/orders/new" element={<NewOrderPage />} />
+                  <Route path="/orders/" element={<OrderHistoryPage />} />
+              </Routes>
+            </>
+          :
+          <AuthPage setUser={setUserStatus} />
+      </main>
+      )
+
+2. JsonWebToken https://www.npmjs.com/package/jsonwebtoken
+  % npm i jsonwebtoken
+  % touch config/checkTokens.js
+  
+  in 'config/checkTokens': 
+
+      const jwt = require('jsonwebtoken');
+          
+      module.exports = function(req, res, next) {
+        let token = req.get('Authorization') || req.query.token;
+        if (token) {
+          token = token.replace('Bearer ', '');
+          jwt.verify(token, process.env.SECRET, function(err, decoded) {
+            req.user = err ? null : decoded.user;  
+            req.exp = err ? null : new Date(decoded.exp * 1000);  
+            return next();
+          });
+        } else {
+          req.user = null;
+          return next();
+        }
+      };
+
+3. install bcrypt for encrypting passwords before saving into mongoDB
+  % npm i bcrypt
