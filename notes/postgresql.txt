@@ -1,0 +1,73 @@
+CREATE TABLE accounts (
+	user_id serial PRIMARY KEY,
+	username VARCHAR ( 50 ) UNIQUE NOT NULL,
+	password VARCHAR ( 50 ) NOT NULL,
+	email VARCHAR ( 255 ) UNIQUE NOT NULL,
+	created_on TIMESTAMP NOT NULL,
+        last_login TIMESTAMP 
+);
+
+
+
+
+// In SQL, you use a foreign key to create a relation between two tables.
+// Foreign keys are stored on one side of the relation. Our example is made up of:
+
+// A foreign key column in the Post table named authorId.
+// A primary key column in the User table named id. The authorId column in the Post table references the id column in the User table.
+// In the Prisma schema, the foreign key / primary key relationship is represented by the @relation attribute on the author field:
+
+// author     User        @relation(fields: [authorId], references: [id])
+
+// model accounts {
+  user_id    Int       @id @default(autoincrement())
+  username   String    @unique @db.VarChar(50)
+  password   String    @db.VarChar(50)
+  email      String    @unique @db.VarChar(255)
+  created_on DateTime  @db.Timestamp(6)
+  last_login DateTime? @db.Timestamp(6)
+}
+
+
+
+ORIGINAL DB SCHEMA:
+
+model User {
+  id            nt            @id @default(autoincrement())
+  name          String
+  email         String         @unique
+  TaskCategory  TaskCategory
+}
+
+model TaskCategory{
+  id          Int             @id @default(autoincrement())
+  name        String          @db.VarChar(50) 
+  detail      String          @db.VarChar(500)
+  color       String          @db.VarChar(30) 
+  userId      Int
+  user        User            @relation(fields: [userId], references: [id])
+  task        Task
+}
+
+model Task {
+  id          Int             @id @default(autoincrement())
+  notes       String          
+  tasktypeId  Int             
+  tasktype    TaskCategory    @relation(fields: [tasktypeId], references: [id])
+  dayId       Int   
+  day         Day             @relation(fields:[dayId], references: [id])
+
+}
+
+model Week {
+  id          Int             @id @default(autoincrement())
+  userId      Int             
+  user        User            @relation(fields: [userId], references: [id])
+}
+
+model Day {
+  id          Int             @id @default(autoincrement())
+  weekday     String          @db.VarChar(100)
+  weekId      Int
+  week        Week            @relation(fields: [weekId], references: [id])
+}

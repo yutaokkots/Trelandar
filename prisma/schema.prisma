@@ -1,0 +1,50 @@
+
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+
+// npx prisma migrate dev --name init_db
+
+
+odel TaskCategory {
+  id      Int      @id @default(autoincrement())
+  userId  Int
+  user    User     @relation(fields: [userId], references: [id])
+
+  tasks   Task[]
+}
+
+model Task {
+  id          Int             @id @default(autoincrement())
+  tasktypeId  Int
+  tasktype    TaskCategory    @relation(fields: [tasktypeId], references: [id])
+  dayId       Int
+  day         Day             @relation(fields: [dayId], references: [id])
+}
+
+model Day {
+  id      Int      @id @default(autoincrement())
+  weekId  Int
+  week    Week     @relation(fields: [weekId], references: [id])
+  tasks   Task[]
+}
+
+model Week {
+  id      Int      @id @default(autoincrement())
+  userId  Int
+  user    User     @relation(fields: [userId], references: [id])
+  days    Day[]
+}
+
+model User {
+  id            Int             @id @default(autoincrement())
+  taskCategories TaskCategory[]
+  weeks         Week[]
+}
