@@ -9,52 +9,42 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
-  id            nt            @id @default(autoincrement())
-  name          String
-  email         String         @unique
-  TaskCategory  TaskCategory
-}
 
-model TaskCategory{
-  id          Int             @id @default(autoincrement())
-  name        String          @db.VarChar(50) 
-  detail      String          @db.VarChar(500)
-  color       String          @db.VarChar(30) 
-  userId      Int
-  user        User            @relation(fields: [userId], references: [id])
-  task        Task
+// npx prisma migrate dev --name init_db
+
+
+odel TaskCategory {
+  id      Int      @id @default(autoincrement())
+  userId  Int
+  user    User     @relation(fields: [userId], references: [id])
+
+  tasks   Task[]
 }
 
 model Task {
   id          Int             @id @default(autoincrement())
-  notes       String          
-  tasktypeId  Int             
+  tasktypeId  Int
   tasktype    TaskCategory    @relation(fields: [tasktypeId], references: [id])
-  dayId       Int   
-  day         Day             @relation(fields:[dayId], references: [id])
-  
-}
-
-model Week {
-  id          Int             @id @default(autoincrement())
-  userId      Int             
-  user        User            @relation(fields: [userId], references: [id])
+  dayId       Int
+  day         Day             @relation(fields: [dayId], references: [id])
 }
 
 model Day {
-  id          Int             @id @default(autoincrement())
-  weekday     String          @db.VarChar(100)
-  weekId      Int
-  week        Week            @relation(fields: [weekId], references: [id])
+  id      Int      @id @default(autoincrement())
+  weekId  Int
+  week    Week     @relation(fields: [weekId], references: [id])
+  tasks   Task[]
 }
 
+model Week {
+  id      Int      @id @default(autoincrement())
+  userId  Int
+  user    User     @relation(fields: [userId], references: [id])
+  days    Day[]
+}
 
-// npx prisma migrate dev --name init_db
-// When you run prisma format, it parses the existing schema.prisma file and rewrites it with the fields, models, and directives properly aligned and indented. It also ensures that the syntax adheres to Prisma's schema specification.
-
-Here's an example of a schema.prisma file before and after running prisma format:
-
-Before running prisma format:
-
-prisma
+model User {
+  id            Int             @id @default(autoincrement())
+  taskCategories TaskCategory[]
+  weeks         Week[]
+}
