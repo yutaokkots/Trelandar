@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 const logger = require('morgan');
 // require('dotenv').config();
-// require('./config/database')
+require('./config/database');
 
 const app = express();
 
@@ -21,6 +21,8 @@ app.use(function (req, res) {
     console.log(`route: ${req.path} does not exist`);
     res.status(404, "route does not exist");
   });
+
+app.use('/users', require('./routes/users'));
 
 app.get('/*', function(req, res) {
 res.sendFile(path.join(__dirname, 'dist', 'index.html'));
