@@ -15,3 +15,4 @@ model accounts {
   created_on DateTime  @db.Timestamp(6)
   last_login DateTime? @db.Timestamp(6)
 }
+
