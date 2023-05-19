@@ -1,3 +1,5 @@
+
+
 generator client {
   provider = "prisma-client-js"
 }
@@ -7,12 +9,52 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model accounts {
-  user_id    Int       @id @default(autoincrement())
-  username   String    @unique @db.VarChar(50)
-  password   String    @db.VarChar(50)
-  email      String    @unique @db.VarChar(255)
-  created_on DateTime  @db.Timestamp(6)
-  last_login DateTime? @db.Timestamp(6)
+model User {
+  id            nt            @id @default(autoincrement())
+  name          String
+  email         String         @unique
+  TaskCategory  TaskCategory
 }
 
+model TaskCategory{
+  id          Int             @id @default(autoincrement())
+  name        String          @db.VarChar(50) 
+  detail      String          @db.VarChar(500)
+  color       String          @db.VarChar(30) 
+  userId      Int
+  user        User            @relation(fields: [userId], references: [id])
+  task        Task
+}
+
+model Task {
+  id          Int             @id @default(autoincrement())
+  notes       String          
+  tasktypeId  Int             
+  tasktype    TaskCategory    @relation(fields: [tasktypeId], references: [id])
+  dayId       Int   
+  day         Day             @relation(fields:[dayId], references: [id])
+  
+}
+
+model Week {
+  id          Int             @id @default(autoincrement())
+  userId      Int             
+  user        User            @relation(fields: [userId], references: [id])
+}
+
+model Day {
+  id          Int             @id @default(autoincrement())
+  weekday     String          @db.VarChar(100)
+  weekId      Int
+  week        Week            @relation(fields: [weekId], references: [id])
+}
+
+
+// npx prisma migrate dev --name init_db
+// When you run prisma format, it parses the existing schema.prisma file and rewrites it with the fields, models, and directives properly aligned and indented. It also ensures that the syntax adheres to Prisma's schema specification.
+
+Here's an example of a schema.prisma file before and after running prisma format:
+
+Before running prisma format:
+
+prisma
