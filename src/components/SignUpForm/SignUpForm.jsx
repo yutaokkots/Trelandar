@@ -1,9 +1,45 @@
 import React from 'react'
+import { useState } from 'react'
 
-export default function SignUpForm() {
+export default function SignUpForm({setUser}) {
+  const [state, setState] = useState({
+    name: '',
+    email: '',
+    password: '',
+    confirm: '',
+    error: ''
+  });
+
+  const handleSubmit = async (evt) => {
+    evt.preventDefault();
+    try {
+      const formData = { ...state };
+      delete formData.confirm;
+      delete formData.error;
+      const user = await signUp(formData);
+      // Update user state with user
+      setUser(user);
+    } catch {
+      // Invalid signup
+      setState({
+        ...state,
+        error: 'Sign Up Failed - Try Again'
+      });
+    }
+  };
+
+  const handleChange = (evt) => {
+    setState({
+      ...state,
+      [evt.target.name]: evt.target.value,
+      error: ''
+    });
+  };
+
+  const disable = state.password !== state.confirm;
   return (
-    <div className="justify-center items-center w-full max-w-xs">
-      <div className="form-container p-3">
+    <div>
+      <div className="form-container p-3 justify-center items-center w-full max-w-md">
         <form className="justify-center bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" autoComplete="off" onSubmit={handleSubmit}>
 
           <div className="text-left bg-white relative z-0 w-full mb-6 group">
@@ -34,5 +70,5 @@ export default function SignUpForm() {
       </div>
       <p className="error-message">&nbsp;{state.error}</p>
     </div>
-  )
+  );
 }
