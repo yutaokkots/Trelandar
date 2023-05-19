@@ -10,41 +10,54 @@ datasource db {
 }
 
 
+
 // npx prisma migrate dev --name init_db
 
 
-odel TaskCategory {
-  id      Int      @id @default(autoincrement())
-  userId  Int
-  user    User     @relation(fields: [userId], references: [id])
+model User {
+  id            Int            @id @default(autoincrement())
+  name          String
+  email         String         @unique
+  TaskCategory  TaskCategory[]
+  weeks         Week[]
+}
 
-  tasks   Task[]
+model TaskCategory{
+  id          Int             @id @default(autoincrement())
+  name        String          @db.VarChar(50) 
+  detail      String          @db.VarChar(500)
+  color       String          @db.VarChar(30) 
+  userId      Int
+  user        User            @relation(fields: [userId], references: [id])
+  tasks       Task[]
 }
 
 model Task {
   id          Int             @id @default(autoincrement())
-  tasktypeId  Int
+  notes       String          
+  tasktypeId  Int             
   tasktype    TaskCategory    @relation(fields: [tasktypeId], references: [id])
-  dayId       Int
-  day         Day             @relation(fields: [dayId], references: [id])
-}
+  dayId       Int   
+  day         Day             @relation(fields:[dayId], references: [id])
 
-model Day {
-  id      Int      @id @default(autoincrement())
-  weekId  Int
-  week    Week     @relation(fields: [weekId], references: [id])
-  tasks   Task[]
 }
 
 model Week {
-  id      Int      @id @default(autoincrement())
-  userId  Int
-  user    User     @relation(fields: [userId], references: [id])
-  days    Day[]
+  id          Int             @id @default(autoincrement())
+  userId      Int             
+  user        User            @relation(fields: [userId], references: [id])
+  days        Day[]
 }
 
-model User {
-  id            Int             @id @default(autoincrement())
-  taskCategories TaskCategory[]
-  weeks         Week[]
+model Day {
+  id          Int             @id @default(autoincrement())
+  weekday     String          @db.VarChar(100)
+  weekId      Int
+  week        Week            @relation(fields: [weekId], references: [id])
+  tasks       Task[]
 }
+
+
+
+
+
