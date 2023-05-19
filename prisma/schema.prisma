@@ -40,7 +40,6 @@ model Task {
   tasktype    TaskCategory    @relation(fields: [tasktypeId], references: [id])
   dayId       Int   
   day         Day             @relation(fields:[dayId], references: [id])
-
 }
 
 model Week {

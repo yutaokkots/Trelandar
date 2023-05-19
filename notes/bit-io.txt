@@ -8,6 +8,8 @@ There are two things that need to be done in order for bit.io to work with Prism
 
 https://docs.bit.io/docs/connecting-via-prisma
 
+https://www.prisma.io/docs/concepts/components/prisma-migrate/shadow-database#cloud-hosted-shadow-databases-must-be-created-manually
+
 https://stackoverflow.com/questions/72324417/prisma-with-bit-io-connection-issue
 
 

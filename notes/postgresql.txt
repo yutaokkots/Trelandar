@@ -30,8 +30,6 @@ CREATE TABLE accounts (
 
 
 
-ORIGINAL DB SCHEMA:
-
 model TaskCategory {
   id      Int      @id @default(autoincrement())
   userId  Int
