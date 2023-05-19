@@ -7,15 +7,20 @@ import AboutPage from "./AboutPage/AboutPage";
 import AuthPage from "./AuthPage/AuthPage";
 
 function App() {
+  const [user, setUser] = useState();
   return (
     <main>
-      <NavBar />
+      {user ? 
+      <>
+      <NavBar user={user} setUser={setUser}/>
       <Routes>
         <Route path="/" element={<Calendar />} />
         <Route path="/about" element={<AboutPage />} />
-        <Route path="/login" element={<AuthPage />} />
-
       </Routes>
+      </>
+      :
+      <AuthPage setUser={setUser}/>
+      }
     </main>
   );
 }
