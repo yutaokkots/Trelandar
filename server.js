@@ -1,8 +1,13 @@
 const express = require('express');
 const path = require('path');
 const logger = require('morgan');
-// require('dotenv').config();
+const session = require('express-session');
+const passport = require('passport');
+require('dotenv').config();
 require('./config/database');
+require('./config/passport');
+
+SECRET=SEICOOL
 
 const app = express();
 
@@ -14,7 +19,13 @@ app.use(express.static(path.join(__dirname, 'dist')));
 
 
 app.use(require("./config/checkToken"));
-
+app.use(session({
+  secret: process.env.SECRET,
+  resave: false,
+  saveUninitialized: true
+}));
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Error handler to check if route exists
 app.use(function (req, res) {
