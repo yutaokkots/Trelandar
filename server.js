@@ -3,13 +3,15 @@ const path = require('path');
 const logger = require('morgan');
 const session = require('express-session');
 const passport = require('passport');
+const {PrismaClient} = require('@prisma/client')
 require('dotenv').config();
-require('./config/database');
+require('./config/prisma');
 require('./config/passport');
 
-SECRET=SEICOOL
+// SECRET=SEICOOL
 
 const app = express();
+const prisma = new PrismaClient();
 
 app.use(logger('dev'));
 
@@ -27,6 +29,16 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.use(function (req, res, next) {
+  res.locals.user = req.user;
+  next();
+});
+
+app.use(function( req, res, next) {
+  req.prisma = prisma;
+  next();
+});
+
 // Error handler to check if route exists
 app.use(function (req, res) {
     console.log(`route: ${req.path} does not exist`);
@@ -39,6 +51,11 @@ app.get('/*', function(req, res) {
 res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
     
+// Example route that uses the Prisma client from the middleware
+app.get('/users', async (req, res) => {
+  const users = await req.prisma.user.findMany();
+  res.json(users);
+});
 
 const port = process.env.PORT || 3000;
 

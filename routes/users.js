@@ -2,12 +2,37 @@
 
 const express = require('express');
 const router = express.Router();
-const usersCtrl = require('../../controllers/users');
+const usersCtrl = require('../controllers/users');
+const passport = require('passport');
 
 // POST /users
 
-router.post('/', usersCtrl.signUp);
+// GET for google authentication
+router.get('/auth/google', passport.authenticate(
+    'google',
+    {
+        // requesting: 'profile' and 'email'
+        scope: ['profile', 'email'],
+    }
+));
 
-router.post('/login', usersCtrl.login);
+router.get('/oauth2callback', passport.authenticate(
+    'google',
+    {
+        successRedirect: '/',
+        failureRedirect: '/'
+}))
+
+
+router.get('/logout', function(req, res){
+    req.logOut(function() {
+        res.redirect('/')
+    })
+})
+
+
+// router.post('/', usersCtrl.signUp);
+
+// router.post('/login', usersCtrl.login);
 
 module.exports = router;

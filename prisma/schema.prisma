@@ -1,7 +1,7 @@
 
-
 generator client {
   provider = "prisma-client-js"
+  relationMode = "foreignKeys"
 }
 
 datasource db {
@@ -11,8 +11,6 @@ datasource db {
 }
 
 
-
-// npx prisma migrate dev --name init_db
 
 
 model User {
@@ -58,8 +56,5 @@ model Day {
   week        Week            @relation(fields: [weekId], references: [id])
   tasks       Task[]
 }
-
-
-
 
 

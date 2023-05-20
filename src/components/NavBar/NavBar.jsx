@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import "./NavBar.css";
+import * as usersAPI from '../../utilities/users-api'
 
 export default function NavBar() {
   return (
@@ -24,6 +25,17 @@ export default function NavBar() {
           About
         </Link>
         &nbsp; &nbsp;
+
+        <Link
+          className="text-lg font-extrabold text-white hover:text-neutral-200"
+          to="/login"
+        >
+          Log in
+        </Link>
+
+        <button className="text-lg font-extrabold text-white hover:text-neutral-200"
+          onClick={() => usersAPI.googleLogin()}>Login with Google</button>
+
         <Link
           className="text-lg font-extrabold text-white hover:text-neutral-200"
           to=""
