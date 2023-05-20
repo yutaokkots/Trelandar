@@ -17,8 +17,10 @@ datasource db {
 
 model User {
   id            Int            @id @default(autoincrement())
-  name          String
+  googleId      String?        
+  name          String        
   email         String         @unique
+  avatar        String?        
   TaskCategory  TaskCategory[]
   weeks         Week[]
 }
