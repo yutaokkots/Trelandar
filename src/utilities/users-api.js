@@ -1,6 +1,6 @@
 import sendRequest from './send-request';
 
-const BASE_URL = '/users'
+const BASE_URL = ""
 
 export function signUp(userData) {
     return sendRequest(BASE_URL, 'POST', userData)
@@ -11,6 +11,7 @@ export function login(credentials) {
 }
 
 export function googleLogin() {
+    console.log("here in the users-api")
     return sendRequest(`${BASE_URL}/auth/google`);
 }
 

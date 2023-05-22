@@ -21,6 +21,7 @@ export default async function sendRequest(url, method = 'GET', payload = null) {
 
     }
 
+    console.log("here in the send-request.js")
     const res = await fetch(url, options);
 
     if (res.ok) return res.json();

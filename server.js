@@ -19,7 +19,6 @@ app.use(express.json());
 
 app.use(express.static(path.join(__dirname, 'dist')));
 
-
 app.use(require("./config/checkToken"));
 app.use(session({
   secret: process.env.SECRET,
@@ -33,6 +32,7 @@ app.use(function (req, res, next) {
   res.locals.user = req.user;
   next();
 });
+console.log('here in the server.js, first message')
 
 app.use(function( req, res, next) {
   req.prisma = prisma;
@@ -45,7 +45,9 @@ app.use(function (req, res) {
     res.status(404, "route does not exist");
   });
 
-app.use('/users', require('./routes/users'));
+console.log('here in the server.js')
+
+app.use('/', require('./routes/index'));
 
 app.get('/*', function(req, res) {
 res.sendFile(path.join(__dirname, 'dist', 'index.html'));
@@ -62,3 +64,5 @@ const port = process.env.PORT || 3000;
 app.listen(port, function() {
 console.log(`Express app running on port ${port}`)
 });
+
+// module.exports = app;
