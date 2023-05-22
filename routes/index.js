@@ -7,6 +7,8 @@ const passport = require('passport');
 
 // All routes begin with /
 
+console.log('inside the index route')
+
 // GET for google authentication
 router.get('/auth/google', passport.authenticate(
     'google',

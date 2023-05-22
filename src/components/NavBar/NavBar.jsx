@@ -33,8 +33,14 @@ export default function NavBar() {
           Log in
         </Link>
 
-        <button className="text-lg font-extrabold text-white hover:text-neutral-200"
-          onClick={() => usersAPI.googleLogin()}>Login with Google</button>
+        {/* <button className="text-lg font-extrabold text-white hover:text-neutral-200"
+          to="/auth/login"
+          onClick={() => usersAPI.googleLogin()}>Login with Google</button> */}
+
+        <Link
+          className="text-lg font-extrabold text-white hover:text-neutral-200"
+          to="/auth/google"
+          >LOG IN</Link>
 
         <Link
           className="text-lg font-extrabold text-white hover:text-neutral-200"

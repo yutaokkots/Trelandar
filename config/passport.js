@@ -5,7 +5,7 @@ const prisma = new PrismaClient();
 
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 
-module.exports = passport;
+// module.exports = passport;
 
 passport.use(new GoogleStrategy(
     {
@@ -13,7 +13,7 @@ passport.use(new GoogleStrategy(
       clientSecret: process.env.GOOGLE_SECRET,
       callbackURL: process.env.GOOGLE_CALLBACK
     },
-    async function (accessToken, refreshToken, profile, cb) {
+    async function(accessToken, refreshToken, profile, cb) {
     //   const prisma = req.prisma; // Assuming the Prisma client is attached to the request object
   
       try {

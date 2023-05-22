@@ -3,6 +3,7 @@ const path = require('path');
 const logger = require('morgan');
 const session = require('express-session');
 const passport = require('passport');
+const app = express();
 const {PrismaClient} = require('@prisma/client')
 require('dotenv').config();
 require('./config/prisma');
@@ -10,7 +11,9 @@ require('./config/passport');
 
 // SECRET=SEICOOL
 
-const app = express();
+
+const userRouter = require('./routes/users');
+
 const prisma = new PrismaClient();
 
 app.use(logger('dev'));
@@ -32,22 +35,22 @@ app.use(function (req, res, next) {
   res.locals.user = req.user;
   next();
 });
-console.log('here in the server.js, first message')
 
 app.use(function( req, res, next) {
   req.prisma = prisma;
   next();
 });
 
-// Error handler to check if route exists
-app.use(function (req, res) {
-    console.log(`route: ${req.path} does not exist`);
-    res.status(404, "route does not exist");
-  });
-
 console.log('here in the server.js')
 
-app.use('/', require('./routes/index'));
+app.use('/users', userRouter);
+app.use('/', require('./routes/index.js'));
+
+// Error handler to check if route exists
+app.use(function (req, res) {
+  console.log(`route: ${req.path} does not exist`);
+  res.status(404, "route does not exist");
+});
 
 app.get('/*', function(req, res) {
 res.sendFile(path.join(__dirname, 'dist', 'index.html'));
