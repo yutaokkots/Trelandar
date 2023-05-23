@@ -1,49 +1,96 @@
-import { useState } from 'react';
-import React from 'react'
+import { useState } from "react";
+import * as usersService from "../../utilities/users-service";
+import { GoogleLogin } from "@react-oauth/google";
+import * as usersAPI from "../../utilities/users-api";
 
 export default function LoginForm({ setUser }) {
-    const [credentials, setCredentials] = useState({
-      email: '',
-      password: ''
-    });
-    const [error, setError] = useState('');
+  const [credentials, setCredentials] = useState({
+    email: "",
+    password: "",
+  });
 
-    function handleChange(evt) {
-      setCredentials({ ...credentials, [evt.target.name]: evt.target.value });
-      setError('');
+  const [error, setError] = useState("");
+
+  const responseMessage = (response) => {
+    console.log(response);
+    usersAPI.googleLogin(response);
+  };
+
+  const errorMessage = (error) => {
+    console.log(error);
+  };
+
+  function handleChange(evt) {
+    setCredentials({ ...credentials, [evt.target.name]: evt.target.value });
+    setError("");
+  }
+
+  async function handleSubmit(evt) {
+    evt.preventDefault();
+    try {
+      const user = await usersService.login(credentials);
+      setUser(user);
+    } catch {
+      setError("Log In Failed - Try Again");
     }
-      
-    async function handleSubmit(evt) {
-        // Prevent form from being submitted to the server
-        evt.preventDefault();
-        try {
-          // The promise returned by the signUp service method 
-          // will resolve to the user object included in the
-          // payload of the JSON Web Token (JWT)
-          const user = await usersService.login(credentials);
-          setUser(user);
-        } catch {
-          setError('Log In Failed - Try Again');
-        }
-      }
+  }
+
   return (
-      <div className="LoginForm form-container p-3 justify-center items-center w-full max-w-md">
-          <div>
-              <form className="justify-center bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" autoComplete="off" onSubmit={handleSubmit}>
-                  <div className="text-left bg-white relative z-0 w-full mb-6 group">
-                      <input type="text" name="email" value={credentials.email} onChange={handleChange} className="text-left block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-red-900 appearance-none dark:text-white dark:border-red-900 dark:focus:border-red-500 focus:outline-none focus:ring-0 focus:border-red-600 peer" placeholder=" " required />
-                      <label className="text-left bg-white peer-focus:font-medium absolute text-sm  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-red-400 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Email Address</label>
-                  </div>
-                  <div className="text-left bg-white relative z-0 w-full mb-6 group">
-                      <input type="password" name="password" value={credentials.password} onChange={handleChange} className="text-left block py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 border-red-900 appearance-none dark:text-white dark:border-gray-900 dark:focus:border-red-500 focus:outline-none focus:ring-0 focus:border-red-600 peer" placeholder=" " required />
-                      <label className="text-left bg-white peer-focus:font-medium absolute text-sm  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-red-400 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Password</label>
-                  </div>
-                  <div className=" text-center bg-white p-2">
-                      <button className="bg-white inline-block align-baseline hover:text-red-500" type="submit">LOG IN</button>
-                  </div>
-              </form>
+    <div className="flex justify-center items-center">
+      <div>
+        <form
+          className="bg-white bg-opacity-95 shadow-md rounded-lg px-8 pt-6 pb-8 mb-4 w-80"
+          autoComplete="off"
+          onSubmit={handleSubmit}
+        >
+          <h2 className="font-display flex justify-center font-extrabold text-neutral-500 text-xl pb-5">
+            Login
+          </h2>
+          <label className="block text-neutral-500 font-bold mb-2 pt-2">
+            Email
+          </label>
+          <input
+            className="shadow bg-transparent appearance-none border rounded w-full py-2 px-3 text-neutral-500 leading-tight focus:outline-none focus:shadow-outline"
+            type="text"
+            name="email"
+            placeholder="Yuta@gmail.com"
+            value={credentials.email}
+            onChange={handleChange}
+            required
+          />
+          <label className="block text-neutral-500 font-bold mb-2 pt-2">
+            Password
+          </label>
+          <input
+            className="shadow bg-transparent appearance-none border rounded w-full py-2 px-3 text-neutral-500 leading-tight focus:outline-none focus:shadow-outline"
+            type="password"
+            name="password"
+            value={credentials.password}
+            onChange={handleChange}
+            required
+          />
+          <div className="flex items-center justify-center pt-4">
+            <button
+              type="submit"
+              className="border bg-white bg-opacity-50 text-white rounded-lg mb-4 py-2 px-4 hover:bg-neutral-300"
+            >
+              <span className="font-display text-neutral-500">Log In</span>
+            </button>
           </div>
-          <p className="error-message">&nbsp;{error}</p>
+          <hr />
+          <div className="flex justify-center pt-4">
+            <GoogleLogin
+              // type="icon"
+              shape="circle"
+              onSuccess={responseMessage}
+              onError={errorMessage}
+            />
+          </div>
+          <div className="flex justify-center pt-3 text-neutral-400">
+            <p className="error-message">&nbsp;{error}</p>
+          </div>
+        </form>
       </div>
-    )
+    </div>
+  );
 }

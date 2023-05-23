@@ -11,21 +11,20 @@ function App() {
   const [user, setUser] = useState();
   return (
     <main>
-      {user ? 
-      <>
-      <NavBar user={user} setUser={setUser}/>
-      <Routes>
-        <Route path="/" element={<Calendar />} />
-        <Route path="/about" element={<AboutPage />} />
-        <Route path="/login" element={<LoginForm />} />
-      </Routes>
-      </>
-      :
-      <>
-      <NavBar user={user} setUser={setUser}/>
-      <AuthPage setUser={setUser}/>
-      </>
-      }
+      {user ? (
+        <>
+          <NavBar user={user} setUser={setUser} />
+          <Routes>
+            <Route path="/" element={<Calendar />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/login" element={<LoginForm />} />
+          </Routes>
+        </>
+      ) : (
+        <>
+          <AuthPage setUser={setUser} />
+        </>
+      )}
     </main>
   );
 }
