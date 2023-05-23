@@ -3,6 +3,24 @@ import "./NavBar.css";
 import * as usersAPI from '../../utilities/users-api'
 
 export default function NavBar() {
+
+
+
+  function handleCredentialResponse(response) {
+    console.log("Encoded JWT ID token: " + response.credential);
+  }
+  window.onload = function () {
+    google.accounts.id.initialize({
+      client_id: "631686074418-1le8qmndti40js1ug00u2nmiepgibdpk.apps.googleusercontent.com",
+      callback: handleCredentialResponse
+    });
+    google.accounts.id.renderButton(
+      document.getElementById("buttonDiv"),
+      { theme: "outline", size: "large" }  // customization attributes
+    );
+    google.accounts.id.prompt(); // also display the One Tap dialog
+  }
+
   return (
     <nav className="flex justify-between bg-neutral-600 bg-opacity-50 px-6 py-6">
       <div>
@@ -41,6 +59,23 @@ export default function NavBar() {
           className="text-lg font-extrabold text-white hover:text-neutral-200"
           to="/auth/google"
           >LOG IN</Link>
+
+          <>
+          <script src="https://accounts.google.com/gsi/client" async defer></script>
+            <div id="g_id_onload"
+              data-client_id="631686074418-1le8qmndti40js1ug00u2nmiepgibdpk.apps.googleusercontent.com"
+              data-login_uri="http://localhost:5173"
+              data-auto_prompt="false">
+            </div>
+            <div className="g_id_signin"
+              data-type="standard"
+              data-size="large"
+              data-theme="outline"
+              data-text="sign_in_with"
+              data-shape="rectangular"
+              data-logo_alignment="left">
+            </div>
+          </>
 
         <Link
           className="text-lg font-extrabold text-white hover:text-neutral-200"
