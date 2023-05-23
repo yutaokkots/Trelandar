@@ -1,10 +1,16 @@
 import { Link } from "react-router-dom";
 import "./NavBar.css";
 import * as usersAPI from '../../utilities/users-api'
+import { GoogleLogin } from '@react-oauth/google';
+
 
 export default function NavBar() {
-
-
+  const responseMessage = (response) => {
+    console.log(response);
+  };
+  const errorMessage = (error) => {
+      console.log(error);
+  }
 
   function handleCredentialResponse(response) {
     console.log("Encoded JWT ID token: " + response.credential);
@@ -60,7 +66,7 @@ export default function NavBar() {
           to="/auth/google"
           >LOG IN</Link>
 
-          <>
+          {/* <>
           <script src="https://accounts.google.com/gsi/client" async defer></script>
             <div id="g_id_onload"
               data-client_id="631686074418-1le8qmndti40js1ug00u2nmiepgibdpk.apps.googleusercontent.com"
@@ -75,7 +81,10 @@ export default function NavBar() {
               data-shape="rectangular"
               data-logo_alignment="left">
             </div>
-          </>
+          </> */}
+
+          {/* <GoogleLogin /> */}
+          <GoogleLogin onSuccess={responseMessage} onError={errorMessage} />
 
         <Link
           className="text-lg font-extrabold text-white hover:text-neutral-200"
