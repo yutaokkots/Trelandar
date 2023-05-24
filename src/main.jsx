@@ -8,12 +8,15 @@ import "./style/tailwind.css";
 
 const googleClientId = import.meta.env.VITE_GOOGLE_CLIENT_ID
 
+// <GoogleOAuthProvider /> allows access to @react-oauth/google within App.
+
 ReactDOM.createRoot(document.getElementById("root")).render(
-    <GoogleOAuthProvider clientId={googleClientId}>
-        <React.StrictMode>
+    <React.StrictMode>
+        <GoogleOAuthProvider clientId={googleClientId}>
             <Router>
                 <App />
             </Router>
-        </React.StrictMode>
-    </GoogleOAuthProvider>
+        </GoogleOAuthProvider>
+    </React.StrictMode>
+
 );

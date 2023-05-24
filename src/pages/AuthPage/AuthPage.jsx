@@ -23,9 +23,9 @@ export default function AuthPage({ setUser }) {
             <h2 className="flex justify-center mt-10 font-bold text-white text-2xl ">
               <TypeAnimation
                 sequence={[
-                  "Strength in your Week",
+                  "Strength in your Week.",
                   2000,
-                  "Have a Strong Week!",
+                  "Sched out your work.",
                   2000,
                 ]}
                 speed={50}

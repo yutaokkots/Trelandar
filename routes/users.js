@@ -1,13 +1,12 @@
-// routes/api/users.js
+// routes/users.js
 
 const express = require('express');
 const router = express.Router();
-const usersCtrl = require('../controllers/users');
+const usersCtrl = require('../controllers/users.js');
 const passport = require('passport');
 
-// POST /users
-
 // GET for google authentication
+// users/auth/google
 router.get('/auth/google', passport.authenticate(
     'google',
     {
@@ -16,6 +15,8 @@ router.get('/auth/google', passport.authenticate(
     }
 ));
 
+// GET for google OAuth2
+// users/oauth2callback
 router.get('/oauth2callback', passport.authenticate(
     'google',
     {
@@ -23,12 +24,15 @@ router.get('/oauth2callback', passport.authenticate(
         failureRedirect: '/'
 }))
 
-
+// users/auth/logout
 router.get('/logout', function(req, res){
     req.logOut(function() {
         res.redirect('/')
     })
 })
+
+// /users/auth/googleSignin
+router.post('/googleSignin', usersCtrl.gSignIn);
 
 
 // router.post('/', usersCtrl.signUp);

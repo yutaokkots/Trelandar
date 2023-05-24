@@ -1,6 +1,19 @@
 const { PrismaClient } = require("@prisma/client");
-
 const prisma = new PrismaClient();
+const oAuth = require('../config/googleOAuth')
+
+
+async function gSignIn(req, res) {
+    //console.log(req.body.credential)
+    const payload = await oAuth.verify(req.body.clientId, req.body.credential)
+    console.log("here is before payload")
+    console.log(payload)
+    console.log("here is after payload")
+    
+
+}
+
+
 
 async function signUp(req, res) {
   await prisma.User.create({
@@ -19,37 +32,7 @@ async function login(req, res) {
       password: password,
     },
   });
-  // if (!user) {
-  //     // User does not exist
-  //     return res.status(401).json({ error: 'Invalid email or password' });
-  //   }
-
-  //   // Check if the provided password matches the stored password
-  //   if (user.password !== password) {
-  //     // Invalid password
-  //     return res.status(401).json({ error: 'Invalid email or password' });
-  //   }
-
-  //   // Login successful
-  //   return res.status(200).json({ message: 'Login successful' });
 }
-
-// google OAuth schema for mongoDB
-// const userSchema = new Schema({
-//     name: String,
-//     googleId: {
-//       type: String,
-//       required: true
-//     },
-//     foodData: [{
-//       type: Schema.Types.ObjectId,
-//       ref: 'Food'
-//     }],
-//     email: String,
-//     avatar: String
-//   }, {
-//     timestamps: true
-//   });
 
 async function getUser(req, res) {
   //   await prisma.User.create({
@@ -71,6 +54,50 @@ async function getUser(req, res) {
   });
   console.log(user);
 }
+
+
+
+
+
+module.exports = {
+    gSignIn
+ }
+
+
+  //module.exports ={googleSignIn:googleSignIn}
+
+
+  // if (!user) {
+  //     // User does not exist
+  //     return res.status(401).json({ error: 'Invalid email or password' });
+  //   }
+
+  //   // Check if the provided password matches the stored password
+  //   if (user.password !== password) {
+  //     // Invalid password
+  //     return res.status(401).json({ error: 'Invalid email or password' });
+  //   }
+
+  //   // Login successful
+  //   return res.status(200).json({ message: 'Login successful' });
+
+
+// google OAuth schema for mongoDB
+// const userSchema = new Schema({
+//     name: String,
+//     googleId: {
+//       type: String,
+//       required: true
+//     },
+//     foodData: [{
+//       type: Schema.Types.ObjectId,
+//       ref: 'Food'
+//     }],
+//     email: String,
+//     avatar: String
+//   }, {
+//     timestamps: true
+//   });
 
 // const result = await prisma.user.findUnique({
 //   where: {
@@ -124,3 +151,6 @@ async function getUser(req, res) {
 //     "exp": 1684886483,
 //     "jti": "bebf10c37ce114cfc2c8b5fac9444e1abb9dd2b5"
 //   }
+
+
+

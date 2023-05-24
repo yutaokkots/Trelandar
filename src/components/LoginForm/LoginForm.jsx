@@ -11,10 +11,32 @@ export default function LoginForm({ setUser }) {
 
   const [error, setError] = useState("");
 
+
   const responseMessage = (response) => {
     console.log(response);
+    console.log(response.credential);
     usersAPI.googleLogin(response);
   };
+
+
+        /// this is the response from google sign-in:  response.credential ->
+  // {
+  //   "iss": "https://accounts.google.com",
+  //   "nbf": 1684887262,
+  //   "aud": "631686074418-1le8qmndti40js1ug00u2nmiepgibdpk.apps.googleusercontent.com",
+  //   "sub": "106260137045428068564",
+  //   "email": "bty2023team@gmail.com",
+  //   "email_verified": true,
+  //   "azp": "631686074418-1le8qmndti40js1ug00u2nmiepgibdpk.apps.googleusercontent.com",
+  //   "name": "Better Than Yesterday",
+  //   "picture": "https://lh3.googleusercontent.com/a/AGNmyxadTHPxRxHHT2U0t6HHuntwHrQDjK5OGp22Jllc=s96-c",
+  //   "given_name": "Better",
+  //   "family_name": "Than Yesterday",
+  //   "iat": 1684887562,
+  //   "exp": 1684891162,
+  //   "jti": "9fa8c7351e26d6f3b9e021c2f72854b9cffe2fc9"   
+  // }
+
 
   const errorMessage = (error) => {
     console.log(error);
