@@ -1,22 +1,35 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import * as usersService from "../../utilities/users-service";
 import { GoogleLogin } from "@react-oauth/google";
-import * as usersAPI from "../../utilities/users-api";
+import { useNavigate } from 'react-router-dom'
+import { AuthContext } from '../../pages/App'
 
-export default function LoginForm({ setUser }) {
+export default function LoginForm() {
+
+  const navigate = useNavigate();
+  const { user, setUser } = useContext(AuthContext)
   const [credentials, setCredentials] = useState({
     email: "",
     password: "",
   });
-
   const [error, setError] = useState("");
 
+  // loginForm from google OAuth
+  async function responseMessage(response){
+      try{
+        const user = await usersService.googleSignUp(response);
+        console.log(user)
+        // make sure that if(user) is a good way to evaluate 
+        
+        if (user){
+            setUser(user)
+            navigate('/');
+        }
+      }catch(error){
+        console.log(error)
+      }
 
-  const responseMessage = (response) => {
-    console.log(response);
-    console.log(response.credential);
-    usersAPI.googleLogin(response);
-  };
+  }
 
 
         /// this is the response from google sign-in:  response.credential ->

@@ -1,12 +1,17 @@
 import * as usersAPI from './users-api'
 
 export async function signUp(userData){
-
     const token = await usersAPI.signUp(userData);
     localStorage.setItem('token', token);
     return getUser();
-
 }
+
+export async function googleSignUp(userData){
+    const token = await usersAPI.googleLogin(userData);
+    localStorage.setItem('token', token);
+    return getUser();
+}
+
 
 export async function login(credentials){
 
@@ -35,7 +40,6 @@ export function getToken(){
 }
 
 export function getUser() {
-
     const token = getToken();
     // If there's a token, return the user in the payload, otherwise return null
     return token ? JSON.parse(atob(token.split('.')[1])).user : null;
