@@ -11,10 +11,7 @@ export function login(credentials) {
 }
 
 export function googleLogin(credentials) {
-  console.log("here in the users-api");
-
   return sendRequest(`${BASE_URL}/googleSignin`, "POST", credentials);
-  // sendRequest(`${BASE_URL}/auth/google`);
 }
 
 export function checkToken() {
