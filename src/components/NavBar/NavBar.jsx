@@ -1,14 +1,12 @@
 import { Link } from "react-router-dom";
 import "./NavBar.css";
+import { useContext } from 'react'
 import * as usersAPI from "../../utilities/users-api";
+import * as usersService from '../../utilities/users-service'
+import { AuthContext } from '../../pages/App'
 
 export default function NavBar() {
-  const responseMessage = (response) => {
-    console.log(response);
-  };
-  const errorMessage = (error) => {
-    console.log(error);
-  };
+  const { user, setUser } = useContext(AuthContext)
 
   function handleCredentialResponse(response) {
     console.log("Encoded JWT ID token: " + response.credential);
@@ -26,6 +24,11 @@ export default function NavBar() {
     google.accounts.id.prompt(); // also display the One Tap dialog
   };
 
+  function handleLogout(){
+      usersService.logOut()
+      setUser(null)
+  }
+
   return (
     <nav className="flex justify-between bg-neutral-600 bg-opacity-50 px-6 py-6 h-[8vh] w-[100vw]">
       <div>
@@ -33,41 +36,45 @@ export default function NavBar() {
           <img className="h-8" src="" />
         </a>
       </div>
-      <Link
-        className="text-lg font-extrabold text-white hover:text-neutral-200"
-        to="/"
-      >
-        Dashboard
-      </Link>
-      &nbsp; &nbsp;
-      <Link
-        className="text-lg font-extrabold text-white hover:text-neutral-200"
-        to="/about"
-      >
-        About
-      </Link>
-      &nbsp; &nbsp;
-      <Link
-        className="text-lg font-extrabold text-white hover:text-neutral-200"
-        to="/login"
-      >
-        Log in
-      </Link>
-      {/* <button className="text-lg font-extrabold text-white hover:text-neutral-200"
-        to="/auth/login"
-        onClick={() => usersAPI.googleLogin()}>Login with Google</button> */}
-      <Link
-        className="text-lg font-extrabold text-white hover:text-neutral-200"
-        to="/auth/google"
-      >
-        LOG IN
-      </Link>
-      <Link
-        className="text-lg font-extrabold text-white hover:text-neutral-200"
-        to=""
-      >
-        Log Out
-      </Link>
+
+      <div>
+        <Link
+          className="text-lg font-extrabold text-white hover:text-neutral-200"
+          to="/"
+        >
+          Dashboard
+        </Link>
+        &nbsp; &nbsp;
+        <Link
+          className="text-lg font-extrabold text-white hover:text-neutral-200"
+          to="/about"
+        >
+          About
+        </Link>
+        &nbsp; &nbsp;
+        <Link
+          className="text-lg font-extrabold text-white hover:text-neutral-200"
+          to="/login"
+        >
+          Log in
+        </Link>
+        {/* <button className="text-lg font-extrabold text-white hover:text-neutral-200"
+          to="/auth/login"
+          onClick={() => usersAPI.googleLogin()}>Login with Google</button> */}
+        <Link
+          className="text-lg font-extrabold text-white hover:text-neutral-200"
+          to="/auth/google"
+        >
+          LOG IN
+        </Link>
+        <Link
+          className="text-lg font-extrabold text-white hover:text-neutral-200"
+          onClick={handleLogout}
+          to=""
+        >
+          Log Out
+        </Link>
+      </div>
     </nav>
   );
 }

@@ -47,6 +47,7 @@ app.use(function( req, res, next) {
 console.log('here in the server.js')
 
 app.use('/api/auth', userRouter);
+//app.use('/api/auth', indexRouter);
 //app.use('/', );
 
 

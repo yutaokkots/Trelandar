@@ -11,11 +11,8 @@ datasource db {
 }
 
 
-
-
 model User {
   id            Int            @id @default(autoincrement())
-  googleId      String?        
   name          String        
   email         String         @unique
   avatar        String?        

@@ -14,7 +14,9 @@ export default function SignUpForm({ setUser }) {
 
   const responseMessage = (response) => {
     console.log(response);
-    // usersAPI.googleLogin(response);
+    console.log(response.credential)
+    usersAPI.googleLogin(response);
+
   };
 
   const errorMessage = (error) => {
