@@ -48,16 +48,18 @@ export default function TimeSlot() {
         '1 AM',
         '1:30 AM',
         '2 AM',
-        // '2:30 AM',
+    ]
+
+            // '2:30 AM',
         // '3 AM',
         // '3:30 AM',
         // '4 AM',
         // '4:30 AM',
-    ]
 
   return (
     <div className='flex flex-col mt-[.5vmin] w-[10.5vw] h-[81.5vh] bg-blue-300 rounded-[1vmin]'>
-        {times.map((time, idx) => <TimeSlot time={time} key={idx} />)}
+    {/* Something about this is breaking the app */}
+        {/* {times.map((time, idx) => <TimeSlot time={time} key={idx} />)} */}
     </div>
   )
 }

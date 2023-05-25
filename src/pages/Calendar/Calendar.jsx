@@ -7,10 +7,10 @@ export default function Calendar() {
     <>
     <div className="flex flex-row bg-slate-100">
       <div className="w-[14vw] h-[90vh] m-[1vmin] mr-[1vmin] bg-slate-200 border-black border-[.1vmin]">
-      <TaskLibrary />
+        <TaskLibrary />
       </div>
       <div className="w-[84vw] h-[90vh] m-[1vmin] ml-[0] bg-slate-400 rounded-[1vmin]">
-      <WeeklySchedule />
+        <WeeklySchedule />
       </div>
     </div>
     </>
