@@ -30,12 +30,13 @@ export default function NavBar() {
   }
 
   return (
-    <nav className="flex justify-between bg-neutral-600 bg-opacity-50 px-6 py-6">
+    <nav className="flex justify-between bg-neutral-600 bg-opacity-50 px-6 py-6 h-[8vh] w-[100vw]">
       <div>
         <a href="/">
           <img className="h-8" src="" />
         </a>
       </div>
+
       <div>
         <Link
           className="text-lg font-extrabold text-white hover:text-neutral-200"

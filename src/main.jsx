@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter as Router } from "react-router-dom";
 import { GoogleOAuthProvider } from "@react-oauth/google";
-import App from "./pages/App";
+import App2 from "./pages/App2/App2";
 import "./style/tailwind.css";
 // require('dotenv').config()
 
@@ -14,7 +14,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <React.StrictMode>
         <GoogleOAuthProvider clientId={googleClientId}>
             <Router>
-                <App />
+                <App2 />
             </Router>
         </GoogleOAuthProvider>
     </React.StrictMode>
