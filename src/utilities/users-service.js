@@ -47,9 +47,7 @@ export function getUser() {
 }
 
 export function logOut() {
-
     localStorage.removeItem('token');
-
 }
 
 export function checkToken(){

@@ -1,14 +1,12 @@
 import { Link } from "react-router-dom";
 import "./NavBar.css";
+import { useContext } from 'react'
 import * as usersAPI from "../../utilities/users-api";
+import * as usersService from '../../utilities/users-service'
+import { AuthContext } from '../../pages/App'
 
 export default function NavBar() {
-  const responseMessage = (response) => {
-    console.log(response);
-  };
-  const errorMessage = (error) => {
-    console.log(error);
-  };
+  const { user, setUser } = useContext(AuthContext)
 
   function handleCredentialResponse(response) {
     console.log("Encoded JWT ID token: " + response.credential);
@@ -25,6 +23,11 @@ export default function NavBar() {
     );
     google.accounts.id.prompt(); // also display the One Tap dialog
   };
+
+  function handleLogout(){
+      usersService.logOut()
+      setUser(null)
+  }
 
   return (
     <nav className="flex justify-between bg-neutral-600 bg-opacity-50 px-6 py-6">
@@ -65,6 +68,7 @@ export default function NavBar() {
         </Link>
         <Link
           className="text-lg font-extrabold text-white hover:text-neutral-200"
+          onClick={handleLogout}
           to=""
         >
           Log Out
