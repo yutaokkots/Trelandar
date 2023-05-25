@@ -57,7 +57,7 @@ export default function TimeSlot() {
 
   return (
     <div className='flex flex-col mt-[.5vmin] w-[10.5vw] h-[81.5vh] bg-blue-300 rounded-[1vmin]'>
-        {times.map((time, idx) => <TimeSlot time={time} key={idx} />)}
+      {/*{times.map((time, idx) => <TimeSlot time={time} key={idx} />)} */}
     </div>
   )
 }
