@@ -4,10 +4,15 @@ import WeeklySchedule from "../../components/WeeklySchedule/WeeklySchedule";
 
 export default function Calendar() {
   return (
-    <div>
-      <h1>Rending MAIN Calendar PAGE</h1>
-      <WeeklySchedule />
+    <>
+    <div className="flex flex-row bg-slate-100">
+      <div className="w-[14vw] h-[90vh] m-[1vmin] mr-[1vmin] bg-slate-200 border-black border-[.1vmin]">
       <TaskLibrary />
+      </div>
+      <div className="w-[84vw] h-[90vh] m-[1vmin] ml-[0] bg-slate-400 rounded-[1vmin]">
+      <WeeklySchedule />
+      </div>
     </div>
+    </>
   );
 }

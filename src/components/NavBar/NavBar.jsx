@@ -27,49 +27,47 @@ export default function NavBar() {
   };
 
   return (
-    <nav className="flex justify-between bg-neutral-600 bg-opacity-50 px-6 py-6">
+    <nav className="flex justify-between bg-neutral-600 bg-opacity-50 px-6 py-6 h-[8vh] w-[100vw]">
       <div>
         <a href="/">
           <img className="h-8" src="" />
         </a>
       </div>
-      <div>
-        <Link
-          className="text-lg font-extrabold text-white hover:text-neutral-200"
-          to="/"
-        >
-          Dashboard
-        </Link>
-        &nbsp; &nbsp;
-        <Link
-          className="text-lg font-extrabold text-white hover:text-neutral-200"
-          to="/about"
-        >
-          About
-        </Link>
-        &nbsp; &nbsp;
-        <Link
-          className="text-lg font-extrabold text-white hover:text-neutral-200"
-          to="/login"
-        >
-          Log in
-        </Link>
-        {/* <button className="text-lg font-extrabold text-white hover:text-neutral-200"
-          to="/auth/login"
-          onClick={() => usersAPI.googleLogin()}>Login with Google</button> */}
-        <Link
-          className="text-lg font-extrabold text-white hover:text-neutral-200"
-          to="/auth/google"
-        >
-          LOG IN
-        </Link>
-        <Link
-          className="text-lg font-extrabold text-white hover:text-neutral-200"
-          to=""
-        >
-          Log Out
-        </Link>
-      </div>
+      <Link
+        className="text-lg font-extrabold text-white hover:text-neutral-200"
+        to="/"
+      >
+        Dashboard
+      </Link>
+      &nbsp; &nbsp;
+      <Link
+        className="text-lg font-extrabold text-white hover:text-neutral-200"
+        to="/about"
+      >
+        About
+      </Link>
+      &nbsp; &nbsp;
+      <Link
+        className="text-lg font-extrabold text-white hover:text-neutral-200"
+        to="/login"
+      >
+        Log in
+      </Link>
+      {/* <button className="text-lg font-extrabold text-white hover:text-neutral-200"
+        to="/auth/login"
+        onClick={() => usersAPI.googleLogin()}>Login with Google</button> */}
+      <Link
+        className="text-lg font-extrabold text-white hover:text-neutral-200"
+        to="/auth/google"
+      >
+        LOG IN
+      </Link>
+      <Link
+        className="text-lg font-extrabold text-white hover:text-neutral-200"
+        to=""
+      >
+        Log Out
+      </Link>
     </nav>
   );
 }
