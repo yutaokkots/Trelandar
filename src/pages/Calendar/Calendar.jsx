@@ -5,7 +5,7 @@ import WeeklySchedule from "../../components/WeeklySchedule/WeeklySchedule";
 export default function Calendar() {
   return (
     <>
-    <div className="flex flex-row bg-slate-100">
+    <div className="flex flex-row bg-[#fcdebe]">
       <div className="w-[14vw] h-[90vh] m-[1vmin] mr-[1vmin] bg-slate-200 border-black border-[.1vmin]">
       <TaskLibrary />
       </div>

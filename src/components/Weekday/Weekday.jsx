@@ -7,7 +7,7 @@ export default function Weekday({day}) {
         <div className='bg-[#86BBD8] text-[14px] text-center'>
             {day}
         </div>
-        <button className='bg-[#86BBD8] text-[12px] w-[10.5vw] p-[0.5vw] mt-[.5vmin] border-black border-[.1vmin] rounded-[1vmin]'>
+        <button className='bg-[#86BBD8] hover:bg-cyan-600 text-[12px] w-[10.5vw] p-[0.5vw] mt-[.5vmin] border-black border-[.1vmin] rounded-[1vmin]'>
             ADD
         </button>
         <DailySchedule />
