@@ -3,7 +3,7 @@ import sendRequest from "./send-request";
 const BASE_URL = "/api/auth";
 
 export function signUp(userData) {
-  return sendRequest(BASE_URL, "POST", userData);
+  return sendRequest(`${BASE_URL}/signUp`, "POST", userData);
 }
 
 export function login(credentials) {
