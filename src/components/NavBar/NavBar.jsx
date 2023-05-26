@@ -30,7 +30,7 @@ export default function NavBar() {
   }
 
   return (
-    <nav className="flex justify-between bg-neutral-600 bg-opacity-50 px-6 py-6 h-[8vh] w-[100vw]">
+    <nav className="flex justify-between bg-cyan-500 bg-opacity-50 px-6 py-6 h-[8vh] w-[100vw]">
       <div>
         <a href="/">
           <img className="h-8" src="" />
@@ -58,6 +58,7 @@ export default function NavBar() {
         >
           Log in
         </Link>
+        &nbsp; &nbsp;
         {/* <button className="text-lg font-extrabold text-white hover:text-neutral-200"
           to="/auth/login"
           onClick={() => usersAPI.googleLogin()}>Login with Google</button> */}
@@ -67,6 +68,7 @@ export default function NavBar() {
         >
           LOG IN
         </Link>
+        &nbsp; &nbsp;
         <Link
           className="text-lg font-extrabold text-white hover:text-neutral-200"
           onClick={handleLogout}
