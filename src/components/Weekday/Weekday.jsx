@@ -3,7 +3,7 @@ import DailySchedule from '../DailySchedule/DailySchedule'
 
 export default function Weekday({day}) {
   return (
-    <div className='w-[11.5vw] h-[89vh] mt-[.5vh] mb-[.5vh] p-[.5vmin] bg-slate-200 rounded-[1vmin]'>
+    <div className='w-[11.5vw] h-[89vh] mt-[.5vh] mb-[.5vh] p-[.5vmin] bg-slate-300 rounded-lg bg-opacity-50 rounded-[1vmin]'>
         <div className='text-[14px] text-center'>
             {day}
         </div>
