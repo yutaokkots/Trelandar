@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
 import "./NavBar.css";
-import { useContext } from 'react'
+import { useContext } from "react";
 import * as usersAPI from "../../utilities/users-api";
-import * as usersService from '../../utilities/users-service'
-import { AuthContext } from '../../pages/App'
+import * as usersService from "../../utilities/users-service";
+import { AuthContext } from "../../pages/App";
 
 export default function NavBar() {
-  const { user, setUser } = useContext(AuthContext)
+  const { user, setUser } = useContext(AuthContext);
 
   function handleCredentialResponse(response) {
     console.log("Encoded JWT ID token: " + response.credential);
@@ -24,16 +24,16 @@ export default function NavBar() {
     google.accounts.id.prompt(); // also display the One Tap dialog
   };
 
-  function handleLogout(){
-      usersService.logOut()
-      setUser(null)
+  function handleLogout() {
+    usersService.logOut();
+    setUser(null);
   }
 
   return (
     <nav className="flex justify-between bg-cyan-500 bg-opacity-50 px-6 py-6 h-[8vh] w-[100vw]">
       <div>
         <a href="/">
-          <img className="h-8" src="" />
+          <img className="h-8" src="/assets/trelandar.svg" />
         </a>
       </div>
 
@@ -50,23 +50,6 @@ export default function NavBar() {
           to="/about"
         >
           About
-        </Link>
-        &nbsp; &nbsp;
-        <Link
-          className="text-lg font-extrabold text-white hover:text-neutral-200"
-          to="/login"
-        >
-          Log in
-        </Link>
-        &nbsp; &nbsp;
-        {/* <button className="text-lg font-extrabold text-white hover:text-neutral-200"
-          to="/auth/login"
-          onClick={() => usersAPI.googleLogin()}>Login with Google</button> */}
-        <Link
-          className="text-lg font-extrabold text-white hover:text-neutral-200"
-          to="/auth/google"
-        >
-          LOG IN
         </Link>
         &nbsp; &nbsp;
         <Link
