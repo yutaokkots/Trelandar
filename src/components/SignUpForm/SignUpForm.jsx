@@ -26,15 +26,21 @@ export default function SignUpForm({ setUser }) {
   // create an error response for when user passwords do not match
 
   const handleSubmit = async (evt) => {
-    evt.preventDefault();
-    try {
-      const { error, confirm, ...data } = formData;
-      const user = await signUp(data);
-      setUser(user);
-    } catch (error) {
-      setFormData({ ...formData, error: "Sign Up Failed - Try Again" });
-    }
-  };
+      evt.preventDefault();
+      try {
+          const { error, confirm, ...data } = formData;
+          console.log(data)
+          console.log(formData)
+          if (passwordConfirm(formData)){
+              const user = await signUp(data);
+              setUser(user);
+          } else {
+            throw new Error('Please use matching passwords')
+          }
+      } catch (error) {
+          setFormData({ ...formData, error: "Sign Up Failed - Try Again" });
+      }
+    };
 
   const handleChange = (evt) => {
     setFormData({
@@ -43,6 +49,14 @@ export default function SignUpForm({ setUser }) {
       error: "",
     });
   };
+
+  function passwordConfirm(formData) {
+    if (formData.password != formData.confirm) {
+      return false
+    } else {
+      return true
+    }
+  }
 
   const disable = formData.password !== formData.confirm;
 
