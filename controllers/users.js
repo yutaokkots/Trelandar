@@ -48,66 +48,65 @@ async function gSignIn(req, res) {
 //  (2) then takes the returned user and generates a new token using the createJWT() function located on this page;
 //  (3) then returns the token as a res response after converting that token to a json format. 
 async function signUp(req, res) {
-  //console.log(req.body)
-  await login(req.body)
-    .then((user)=>{
-      return createJWT(user)
-    }).then((token)=>
-      res.json(token)
-    ).catch((error) => {
-      return error
-    })
+    await createUser(req.body)
+        .then((user)=>{
+            return createJWT(user)
+        }).then((token)=>
+            res.json(token)
+        ).catch((error) => {
+            return error
+        })
   }
+
+
+async function checkUser(payload){
+    return await prisma.user.findUnique({
+        where: {
+            email: payload.email
+        }
+  })
+}
+
+async function createUser(payload){
+    try {
+        const user = checkUser(payload)
+        if (user) return user;
+        const encryptedPayload = await prismaAuth.encryptPassword(payload)
+        const newUser = await prisma.user.create({
+            data: {
+                name: encryptedPayload.name,
+                email: encryptedPayload.email,
+                password: encryptedPayload.password
+            }
+        })
+        return newUser
+    } catch(err){
+        return err
+    }
+}
+
 
 // login(payload) -> if the user exists, return the user; 
 //  if user does not exist, create a new user with the information provided, and return the user
 async function login(payload) {
     try {
-        const user = await prisma.user.findUnique({
-            where: {
-                email: payload.email
-            }
-        });
-        if (user) return user;
-    
-
-        const newUser = await prisma.user.create({
-            data: {
-                name: payload.name,
-                email: payload.email,
-                avatar: payload.picture
-                // modify user schema to include password + encryption
-                // save encrypted password in user model
-            }
+      console.log('line 93', payload)
+      const user = await checkUser(payload)
+      console.log('line 95', user)
+      if (user) return user;
+      const newUser = await prisma.user.create({
+          data: {
+              name: payload.name,
+              email: payload.email,
+              avatar: payload.picture
+          }
         })
-        
-        // if (payload.password){
-        //     await prismaAuth.encryptPassword(payload)
-        //     const encryptedPayload = await prismaAuth.encryptPassword(payload)
-        //     const newUser = await prisma.user.create({
-        //         data: {
-        //             name: payload.name,
-        //             email: payload.email,
-        //             password: payload.password
-        //             // modify user schema to include password + encryption
-        //             // save encrypted password in user model
-        //         }
-        //     })
-        // }
-
+      console.log('line 104', newUser)
     return newUser;
   } catch (err) {
     return err;
   }
 }
-  
-//   await prisma.User.create({
-//     data: {
-//       name: "Vili3",
-//       email: "vm3@gm3.com",
-//     },
-//   });
-// }
 
 /////////////
 // response from JWT create token function: 
