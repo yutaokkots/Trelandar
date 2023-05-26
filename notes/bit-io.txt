@@ -1,0 +1,23 @@
+Connection between Prisma ORM and Bit.io database
+
+There are two things that need to be done in order for bit.io to work with Prisma.
+
+1. Database names must be formatted as username.dbname rather than username/dbname. bit.io supports a number of different separator characters in the database name because different clients have different requirements around permissible characters in database names.
+
+2. You have to create a second database on bit.io to use as a "shadow database." By default, this is done automatically—a shadow database is created, used, and deleted. However, most cloud database providers don't allow use of the CREATE DATABASE, so a shadow database must be created explicitly. See the prisma docs for details.
+
+https://docs.bit.io/docs/connecting-via-prisma
+
+https://www.prisma.io/docs/concepts/components/prisma-migrate/shadow-database#cloud-hosted-shadow-databases-must-be-created-manually
+
+https://stackoverflow.com/questions/72324417/prisma-with-bit-io-connection-issue
+
+
+1) 
+DATABASE_URL=postgresql://username123:xxxxxxxxxxxxXXxxXXXxxxxXXXxxxXX.bit.io:5432/username123/trelandar
+
+change to: 
+
+DATABASE_URL=postgresql://username123:xxxxxxxxxxxxXXxxXXXxxxxXXXxxxXX.bit.io:5432/username123.trelandar
+
+2) create new database in bit.io to serve as the shadow database 

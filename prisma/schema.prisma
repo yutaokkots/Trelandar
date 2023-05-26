@@ -1,0 +1,58 @@
+
+generator client {
+  provider = "prisma-client-js"
+  relationMode = "foreignKeys"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
+}
+
+
+model User {
+  id            Int            @id @default(autoincrement())
+  name          String        
+  email         String         @unique
+  avatar        String?    
+  password      String   
+  TaskCategory  TaskCategory[]
+  weeks         Week[]
+}
+
+model TaskCategory{
+  id          Int             @id @default(autoincrement())
+  name        String          @db.VarChar(50) 
+  detail      String          @db.VarChar(500)
+  color       String          @db.VarChar(30) 
+  userId      Int
+  user        User            @relation(fields: [userId], references: [id])
+  tasks       Task[]
+}
+
+model Task {
+  id          Int             @id @default(autoincrement())
+  notes       String          
+  tasktypeId  Int             
+  tasktype    TaskCategory    @relation(fields: [tasktypeId], references: [id])
+  dayId       Int   
+  day         Day             @relation(fields:[dayId], references: [id])
+}
+
+model Week {
+  id          Int             @id @default(autoincrement())
+  userId      Int             
+  user        User            @relation(fields: [userId], references: [id])
+  days        Day[]
+}
+
+model Day {
+  id          Int             @id @default(autoincrement())
+  weekday     String          @db.VarChar(100)
+  weekId      Int
+  week        Week            @relation(fields: [weekId], references: [id])
+  tasks       Task[]
+}
+
+

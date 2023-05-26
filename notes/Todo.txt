@@ -1,0 +1,43 @@
+
+Sign-up for non-google users:
+1. 'controllers/users.js': the function: signUp()
+    - able to save the information to the postgreSQL db using Prisma.
+2. 'controllers/users.js': the function: login()
+    - able to retrieve stored user information from the postgreSQL db
+
+
+sign-up for google users:
+1. signin using 'Google Sign-in', and retrieve token from Google OAuth
+
+(incomplete) 
+1. Send the token to backend
+2. verify the token
+3. store the user information to the postgreSQL db (If user doesn't exist)
+4. retrieve the user information from the postgreSQL db 
+5. 
+
+
+
+// inside the jwt token, see src/LoginForm.jsx
+
+  const responseMessage = (response) => {
+    console.log(response.credential);
+    usersAPI.googleLogin(response.credential);
+  };
+
+  // {
+  //   "iss": "https://accounts.google.com",
+  //   "nbf": 1684887262,
+  //   "aud": "631686074418-1le8qmndti40js1ug00u2nmiepgibdpk.apps.googleusercontent.com",
+  //   "sub": "106260137045428068564",
+  //   "email": "bty2023team@gmail.com",
+  //   "email_verified": true,
+  //   "azp": "631686074418-1le8qmndti40js1ug00u2nmiepgibdpk.apps.googleusercontent.com",
+  //   "name": "Better Than Yesterday",
+  //   "picture": "https://lh3.googleusercontent.com/a/AGNmyxadTHPxRxHHT2U0t6HHuntwHrQDjK5OGp22Jllc=s96-c",
+  //   "given_name": "Better",
+  //   "family_name": "Than Yesterday",
+  //   "iat": 1684887562,
+  //   "exp": 1684891162,
+  //   "jti": "9fa8c7351e26d6f3b9e021c2f72854b9cffe2fc9"   
+  // }

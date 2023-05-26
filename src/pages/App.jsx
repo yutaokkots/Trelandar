@@ -1,34 +1,47 @@
-import { useState } from 'react'
-import viteLogo from '../assets/trelandar.svg'
-import './App.css'
-import { Routes, Route } from 'react-router-dom';
+import { useState, createContext, useEffect } from "react";
+import "./App.css";
+import { Routes, Route } from "react-router-dom";
+import NavBar from "../components/NavBar/NavBar";
+import Calendar from "./Calendar/Calendar";
+import AboutPage from "./AboutPage/AboutPage";
+import AuthPage from "./AuthPage/AuthPage";
+import LoginForm from "../components/LoginForm/LoginForm";
+import * as usersService from '../utilities/users-service'
 
+export const AuthContext = createContext()
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [user, setUser] = useState(usersService.getUser());
+
+  useEffect(()=>{
+      setUser(usersService.getUser())
+  }, [])
+
+  // function updateUser(userState){
+  //     setUser(userState)
+  //   }
+
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-
-      </div>
-      <h1>Trelandar</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <main>
+      <AuthContext.Provider value={{user, setUser}}>
+          {user ? (
+            <>
+              <NavBar setUser={setUser}/>
+              <Routes>
+                <Route path="/" element={<Calendar />} />
+                <Route path="/about" element={<AboutPage />} />
+                <Route path="/login" element={<LoginForm />} />
+              </Routes>
+            </>
+          ) : (
+            <>
+              <AuthPage setUser={setUser} />
+            </>
+          )}
+      </AuthContext.Provider>
+    </main>
+  );
 }
 
-export default App
+export default App;
