@@ -27,7 +27,7 @@ function App() {
       <AuthContext.Provider value={{user, setUser}}>
           {user ? (
             <>
-              <NavBar/>
+              <NavBar setUser={setUser}/>
               <Routes>
                 <Route path="/" element={<Calendar />} />
                 <Route path="/about" element={<AboutPage />} />
