@@ -1,19 +1,13 @@
-const { PrismaClient } = require('@prisma/client');
-const prisma = new PrismaClient();
-
 require('dotenv').config();
-const bcrypt = require('bcryptjs');
-const jwt = require('../utils/jwt');
+const bcrypt = require('bcrypt');
+const SALT_ROUNDS = 8
 
-class AuthService {
-    static async register(data) {
-          const { email } = data;
-          data.password = bcrypt.hashSync(data.password, 8);
-          let user = prisma.user.create({
-              data
-          })
-          data.accessToken = await jwt.signAccessToken(user);
-  
-          return data;
-      }
+
+async function encryptPassword(data) {
+    data.password = await bcrypt.hash(data.password, SALT_ROUNDS);
+    return data
+}
+
+module.exports = {
+    encryptPassword
 }

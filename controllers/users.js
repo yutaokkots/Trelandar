@@ -3,24 +3,10 @@ const prisma = new PrismaClient();
 const oAuth = require('../config/googleOAuth')
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
+const prismaAuth = require('../config/prismaAuth') 
 
-// {
-//     "iss": "https://accounts.google.com",
-//     "nbf": 1684882583,
-//     "aud": "631686074418-1le8qmndti40js1ug00u2nmiepgibdpk.apps.googleusercontent.com",
-//     "sub": "106260137045428068564",
-//     "email": "bty2023team@gmail.com",
-//     "email_verified": true,
-//     "azp": "631686074418-1le8qmndti40js1ug00u2nmiepgibdpk.apps.googleusercontent.com",
-//     "name": "Better Than Yesterday",
-//     "picture": "https://lh3.googleusercontent.com/a/AGNmyxadTHPxRxHHT2U0t6HHuntwHrQDjK5OGp22Jllc=s96-c",
-//     "given_name": "Better",
-//     "family_name": "Than Yesterday",
-//     "iat": 1684882883,
-//     "exp": 1684886483,
-//     "jti": "bebf10c37ce114cfc2c8b5fac9444e1abb9dd2b5"
-//   }
 
+// createJWT(user) -> takes the user information, and includes an expiration key-value to the object
 function createJWT(user) {
     return jwt.sign(
         {user},
@@ -39,20 +25,28 @@ function createJWT(user) {
 //   }
 // }
 
-
+// gSignIn() -> purpose: allow a google-user to sign up/register with a 'single-click' sign-on. 
+//  (1) verifies token from front-end using google-auth-library's 'verifyIdToken()' method;
+//  (2) then takes the returned payload and passes through login() function located on this page;
+//  (3) then takes the returned user and generates a new token using the createJWT() function located on this page;
+//  (4) then returns the token as a res response after converting that token to a json format. 
 async function gSignIn(req, res) {
     await oAuth.verify(req.body.clientId, req.body.credential)
-      .then((payload)=>{
-        return login(payload)
-      }).then((user)=>{
-        return createJWT(user)
-      }).then((token)=>
-        res.json(token)
-      ).catch((error) => {
-        return error
-      })
-    }
+        .then((payload)=>{
+            return login(payload)
+        }).then((user)=>{
+            return createJWT(user)
+        }).then((token)=>
+            res.json(token)
+        ).catch((error) => {
+          return error
+        })
+}
 
+// signUp() -> purpose: allow a user to sign up/register by creating a new password. 
+//  (1) passes the req object (req.body) which contains user sign-up infor, and passes through login() function located on this page;
+//  (2) then takes the returned user and generates a new token using the createJWT() function located on this page;
+//  (3) then returns the token as a res response after converting that token to a json format. 
 async function signUp(req, res) {
   //console.log(req.body)
   await login(req.body)
@@ -65,26 +59,42 @@ async function signUp(req, res) {
     })
   }
 
-
+// login(payload) -> if the user exists, return the user; 
+//  if user does not exist, create a new user with the information provided, and return the user
 async function login(payload) {
-  console.log(payload.email)
-  try {
-    const user = await prisma.user.findUnique({
-      where: {
-        email: payload.email
-      }
-    });
-    if (user) return user;
+    try {
+        const user = await prisma.user.findUnique({
+            where: {
+                email: payload.email
+            }
+        });
+        if (user) return user;
     
-    const newUser = await prisma.user.create({
-      data: {
-        name: payload.name,
-        email: payload.email,
-        avatar: payload.picture
-        // modify user schema to include password + encryption
-        // save encrypted password in user model
-      }
-    })
+
+        const newUser = await prisma.user.create({
+            data: {
+                name: payload.name,
+                email: payload.email,
+                avatar: payload.picture
+                // modify user schema to include password + encryption
+                // save encrypted password in user model
+            }
+        })
+        
+        // if (payload.password){
+        //     await prismaAuth.encryptPassword(payload)
+        //     const encryptedPayload = await prismaAuth.encryptPassword(payload)
+        //     const newUser = await prisma.user.create({
+        //         data: {
+        //             name: payload.name,
+        //             email: payload.email,
+        //             password: payload.password
+        //             // modify user schema to include password + encryption
+        //             // save encrypted password in user model
+        //         }
+        //     })
+        // }
+
     return newUser;
   } catch (err) {
     return err;
@@ -128,7 +138,7 @@ async function login(payload) {
 async function getUser(req, res) {
   const user = await prisma.user.findUnique({
     where: {
-      id: req.body.id,
+        id: req.body.id,
     },
     include: {
         TaskCategory: true,
