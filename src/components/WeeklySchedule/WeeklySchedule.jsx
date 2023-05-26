@@ -16,7 +16,7 @@ export default function WeeklySchedule() {
 
   return (
     <>
-    <div className='bg-[#fcdebe] flex flex-row justify-evenly'>
+    <div className='bg-[#5E5768] flex flex-row justify-evenly'>
       {days.map((day, idx) => <Weekday day={day} key={idx}/>
       )}
     </div>

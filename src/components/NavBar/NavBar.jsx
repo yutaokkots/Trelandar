@@ -30,7 +30,7 @@ export default function NavBar() {
   }
 
   return (
-    <nav className="flex justify-between bg-[#928779] px-6 py-6 h-[8vh] w-[100vw]">
+    <nav className="flex justify-between bg-[#5E5768] px-6 py-6 h-[8vh] w-[100vw]">
       <div>
         <a href="/">
           <img className="h-8" src="" />
