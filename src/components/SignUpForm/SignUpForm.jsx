@@ -23,6 +23,8 @@ export default function SignUpForm({ setUser }) {
     console.log(error);
   };
 
+  // create an error response for when user passwords do not match
+
   const handleSubmit = async (evt) => {
     evt.preventDefault();
     try {

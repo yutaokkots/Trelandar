@@ -16,7 +16,7 @@ model User {
   name          String        
   email         String         @unique
   avatar        String?    
-  password      String   
+  password      String?     
   TaskCategory  TaskCategory[]
   weeks         Week[]
 }
