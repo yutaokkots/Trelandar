@@ -41,7 +41,6 @@ function createJWT(user) {
 
 
 async function gSignIn(req, res) {
-
     await oAuth.verify(req.body.clientId, req.body.credential)
       .then((payload)=>{
         return login(payload)
@@ -52,15 +51,20 @@ async function gSignIn(req, res) {
       ).catch((error) => {
         return error
       })
+    }
 
-    
-
-    // const payload = await oAuth.verify(req.body.clientId, req.body.credential)
-    // const user = await login(payload)
-    // const token = createJWT(user)
-    // console.log(token)
-    // res.json(token)
+async function signUp(req, res) {
+  //console.log(req.body)
+  await login(req.body)
+    .then((user)=>{
+      return createJWT(user)
+    }).then((token)=>
+      res.json(token)
+    ).catch((error) => {
+      return error
+    })
   }
+
 
 async function login(payload) {
   console.log(payload.email)
@@ -77,6 +81,8 @@ async function login(payload) {
         name: payload.name,
         email: payload.email,
         avatar: payload.picture
+        // modify user schema to include password + encryption
+        // save encrypted password in user model
       }
     })
     return newUser;
@@ -134,7 +140,8 @@ async function getUser(req, res) {
 
 module.exports = {
     gSignIn,
-    getUser
+    getUser,
+    signUp
  }
 
   //module.exports ={googleSignIn:googleSignIn}

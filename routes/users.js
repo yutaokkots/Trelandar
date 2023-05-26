@@ -34,6 +34,8 @@ router.get('/logout', function(req, res){
 // /users/auth/googleSignin
 router.post('/googleSignin', usersCtrl.gSignIn);
 
+// /users/auth/signUp
+router.post('/signUp', usersCtrl.signUp);
 
 // router.post('/', usersCtrl.signUp);
 
