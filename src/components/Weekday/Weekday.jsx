@@ -3,13 +3,13 @@ import DailySchedule from '../DailySchedule/DailySchedule'
 
 export default function Weekday({day}) {
   return (
-    <div className='w-[11.5vw] h-[89vh] mt-[.5vh] mb-[.5vh] p-[.5vmin] bg-slate-300 rounded-lg bg-opacity-50 rounded-[1vmin]'>
-        <div className='text-[14px] text-center'>
+    <div className='border-4 border-[#5E5768] w-[11.5vw] h-[89vh] mt-[.5vh] mb-[.5vh] p-[.5vmin] rounded-lg  rounded-[1vmin] '>
+        <div className='bg-[#5E5768] text-[14px] text-center text-white'>
             {day}
         </div>
-        <button className='text-[12px] w-[10.5vw] p-[0.5vw] mt-[.5vmin] border-black border-[.1vmin] rounded-[1vmin]'>
+        {/* <button className='text-[12px] w-[10.5vw] p-[.5vw] mt-[.5vmin] border-2 border-[#5E5768] border-[.1vmin] rounded-[1vmin]'>
             ADD
-        </button>
+        </button> */}
         <DailySchedule />
     </div>
   )

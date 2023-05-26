@@ -9,7 +9,7 @@ export default function Calendar() {
         <div className="w-[14vw] h-[90vh] m-[1vmin] mr-[1vmin] bg-slate-300 rounded-lg bg-opacity-50 " >
           <TaskLibrary />
         </div>
-        <div className="w-[84vw] h-[90vh] m-[1vmin] ml-[0] bg-slate-400 rounded-[1vmin]">
+        <div className="w-[84vw] h-[90vh] m-[1vmin] ml-[0] bg-slate-300 bg-opacity-50 rounded-[1vmin]">
           <WeeklySchedule />
         </div>
       </div>

@@ -42,7 +42,7 @@ export default function TaskLibrary() {
           return (
             <div
               key={idx}
-              className="hover:bg-[#5E5768] flex flex-row justify-between items-center  w-[12vw] mx-[1vw] my-[1vh] px-[1vmin] py-[1vmin] border-white border-[.1vmin] rounded-[5px]"
+              className="hover:bg-[#D4D2A5] flex flex-row justify-between items-center  w-[12vw] mx-[1vw] my-[1vh] px-[1vmin] py-[1vmin] border-white border-[.1vmin] rounded-[5px]"
             >
               <TaskItem task={task} />
               <div
