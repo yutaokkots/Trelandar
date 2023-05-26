@@ -15,15 +15,22 @@ function createJWT(user) {
     )
 }
 
-// async function create(req, res){
-//   try{
-//       const user = await prisma.user.create(req.body);
-//       const token = createJWT(user)
-//       res.json(token)
-//   } catch(err){
-//       res.status(400).json(err)
-//   }
-// }
+// login() -> takes the user information, searches for the user, and checks the user's password with recorded password
+async function login(req, res) {
+    try {
+        const user = await prisma.user.findUnique({
+            where: 
+              {email: req.body.email}
+        });
+        if (!user) throw new Error();
+        const match = await bcrypt.compare(req.body.password, user.password);
+        if (!match) throw new Error();
+        res.json( createJWT(user) );
+    } catch {
+        res.status(400).json('Bad Credentials');
+    }
+}
+
 
 // gSignIn() -> purpose: allow a google-user to sign up/register with a 'single-click' sign-on. 
 //  (1) verifies token from front-end using google-auth-library's 'verifyIdToken()' method;
@@ -33,7 +40,7 @@ function createJWT(user) {
 async function gSignIn(req, res) {
     await oAuth.verify(req.body.clientId, req.body.credential)
         .then((payload)=>{
-            return login(payload)
+            return glogin(payload)
         }).then((user)=>{
             return createJWT(user)
         }).then((token)=>
@@ -58,7 +65,7 @@ async function signUp(req, res) {
         })
   }
 
-
+// checkUser() -> checks the db for a user's email existing
 async function checkUser(payload){
     return await prisma.user.findUnique({
         where: {
@@ -67,9 +74,28 @@ async function checkUser(payload){
   })
 }
 
+
+// findUnique
+// findUniqueOrThrow
+// findFirst
+// findFirstOrThrow
+// findMany
+// create
+// update
+// upsert
+// delete
+// createMany
+// updateMany
+// deleteMany
+// count
+// aggregate
+// groupBy
+
+// createUser(payload) -> if the user exists, return the user; 
+//  if user does not exist, create a new user with the information provided, and return the user
 async function createUser(payload){
     try {
-        const user = checkUser(payload)
+        const user = await checkUser(payload)
         if (user) return user;
         const encryptedPayload = await prismaAuth.encryptPassword(payload)
         const newUser = await prisma.user.create({
@@ -86,13 +112,11 @@ async function createUser(payload){
 }
 
 
-// login(payload) -> if the user exists, return the user; 
+// glogin(payload) -> if the user exists, return the user; 
 //  if user does not exist, create a new user with the information provided, and return the user
-async function login(payload) {
+async function glogin(payload) {
     try {
-      console.log('line 93', payload)
       const user = await checkUser(payload)
-      console.log('line 95', user)
       if (user) return user;
       const newUser = await prisma.user.create({
           data: {
@@ -101,38 +125,12 @@ async function login(payload) {
               avatar: payload.picture
           }
         })
-      console.log('line 104', newUser)
     return newUser;
   } catch (err) {
     return err;
   }
 }
 
-/////////////
-// response from JWT create token function: 
-// {
-//   "user": {
-//     "id": 7,
-//     "name": "Better Than Yesterday",
-//     "email": "bty2023team@gmail.com",
-//     "avatar": "https://lh3.googleusercontent.com/a/AAcHTtexzm9WeF4n_357dX9ClZ2e78ks2tRTPfI_ylQ6=s96-c"
-//   },
-//   "iat": 1685048927,
-//   "exp": 1685135327
-// }
-
-/////////////
-
-
-// async function login(req, res) {
-//   const { email, password } = req.body;
-//   const user = await prisma.user.findUnique({
-//     where: {
-//       email: email,
-//       password: password,
-//     },
-//   });
-// }
 
 async function getUser(req, res) {
   const user = await prisma.user.findUnique({
@@ -150,7 +148,8 @@ async function getUser(req, res) {
 module.exports = {
     gSignIn,
     getUser,
-    signUp
+    signUp,
+    login
  }
 
   //module.exports ={googleSignIn:googleSignIn}
