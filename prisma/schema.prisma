@@ -15,7 +15,8 @@ model User {
   id            Int            @id @default(autoincrement())
   name          String        
   email         String         @unique
-  avatar        String?        
+  avatar        String?    
+  password      String   
   TaskCategory  TaskCategory[]
   weeks         Week[]
 }
