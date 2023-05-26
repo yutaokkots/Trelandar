@@ -29,11 +29,11 @@
 
 ### Description:
 
-Introducing **JobTrackr** - the ultimate job tracking platform for job seekers! With our Full-Stack Web Application, users can easily keep track of their job applications, view their pending and declined jobs, and see upcoming interviews all in one place. Our website offers a clean and intuitive user interface that allows you to stay organized and informed throughout your job search.
+**Trelandar** is an easy-to-use calendar and task manager. This full-stack web app was built using React front-end and Node.js and Express.js backend integrated with PostgreSQL. 
 <br />
-But that's not all! JobTrackr also offers a comprehensive library of videos that cover a range of topics related to job interviews. With our seamless integration of YouTube API, users can access these videos at any time to learn how to ace their job interviews and land their dream job.
+This app was collaboratively created with a team of six software engineers. 
 <br />
-Don't miss out on this amazing opportunity to stay on top of your job search and improve your interview skills. Sign up now for JobTrackr and take your job search to the next level!
+
 
 ## :link: Associated Links:
 
