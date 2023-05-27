@@ -65,6 +65,9 @@ async function signUp(req, res) {
         })
   }
 
+// ^ add error handling for NOT automatically creating a json token with empty user
+// information. 
+
 // checkUser() -> checks the db for a user's email existing
 async function checkUser(payload){
     return await prisma.user.findUnique({
@@ -105,6 +108,7 @@ async function createUser(payload){
                 password: encryptedPayload.password
             }
         })
+        console.log(newUser)
         return newUser
     } catch(err){
         return err
@@ -123,7 +127,11 @@ async function glogin(payload) {
               name: payload.name,
               email: payload.email,
               avatar: payload.picture
-          }
+          },
+          include: {
+            TaskCategory: true,
+            weeks: true,
+        }
         })
     return newUser;
   } catch (err) {
@@ -145,11 +153,23 @@ async function getUser(req, res) {
   console.log(user);
 }
 
+
+
+// model TaskCategory{
+//     id          Int             @id @default(autoincrement())
+//     name        String          @db.VarChar(50) 
+//     detail      String          @db.VarChar(500)
+//     color       String          @db.VarChar(30) 
+//     userId      Int
+//     user        User            @relation(fields: [userId], references: [id])
+//     tasks       Task[]
+//   }
+
 module.exports = {
     gSignIn,
     getUser,
     signUp,
-    login
+    login,
  }
 
   //module.exports ={googleSignIn:googleSignIn}

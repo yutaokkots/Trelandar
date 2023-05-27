@@ -37,8 +37,13 @@ model Task {
   tasktypeId  Int             
   tasktype    TaskCategory    @relation(fields: [tasktypeId], references: [id])
   dayId       Int   
-  day         Day             @relation(fields:[dayId], references: [id])
+  day         Day             @relation(fields:[dayId], references: [id]) 
+  startTime   DateTime        @db.Timestamptz(1)
+  endTime     DateTime?       @db.Timestamptz(1)
 }
+
+
+
 
 model Week {
   id          Int             @id @default(autoincrement())

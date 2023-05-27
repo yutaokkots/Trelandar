@@ -4,27 +4,27 @@ import TaskItem from "../TaskItem/TaskItem";
 const tasks = [
   {
     name: "Chores",
-    color: "blue",
+    color: "#9BAADD",
   },
   {
     name: "Work",
-    color: "red",
+    color: "#95DBDA",
   },
   {
     name: "Lunch",
-    color: "green",
+    color: "#EAB0E3",
   },
   {
     name: "Dinner",
-    color: "purple",
+    color: "#F0A8A8",
   },
   {
     name: "Free",
-    color: "pink",
+    color: "#9AE3B7",
   },
   {
     name: "Social",
-    color: "grey",
+    color: "#E6CDA3",
   },
 ];
 
