@@ -7,9 +7,9 @@ import AboutPage from "./AboutPage/AboutPage";
 import AuthPage from "./AuthPage/AuthPage";
 import LoginForm from "../components/LoginForm/LoginForm";
 import * as usersService from "../utilities/users-service";
+import Footer from "../components/Footer/Footer";
 
 export const AuthContext = createContext();
-
 
 function App() {
   const [user, setUser] = useState(usersService.getUser());
@@ -40,6 +40,7 @@ function App() {
           </>
         )}
       </AuthContext.Provider>
+      <Footer />
     </main>
   );
 }

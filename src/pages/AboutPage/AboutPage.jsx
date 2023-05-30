@@ -20,6 +20,11 @@ export default function AboutPage() {
             </p>
           </div>
         </div>
+        <div>
+          <h1 className="flex justify-center font-bold text-3xl text-[#5e5768] py-14">
+            Meet the Team
+          </h1>
+        </div>
       </div>
     </main>
   );
