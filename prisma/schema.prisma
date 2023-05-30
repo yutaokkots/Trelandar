@@ -40,6 +40,7 @@ model Task {
   day         Day             @relation(fields:[dayId], references: [id]) 
   startTime   DateTime        @db.Timestamptz(1)
   endTime     DateTime?       @db.Timestamptz(1)
+  completed   Boolean         @default(false)
 }
 
 
