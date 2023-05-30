@@ -2,7 +2,7 @@
   
 <img src="https://res.cloudinary.com/diw7vmgum/image/upload/v1685126979/trelandar-fcedbecolor_fmv835.png" height="90" />
 
-### Slogan goes here
+### Strength in your Week
 
 # Trelander
 
