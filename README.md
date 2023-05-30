@@ -1,6 +1,6 @@
 <div align="center">
   
-<img src="" width="30%" height="15%" />
+<img src="https://res.cloudinary.com/diw7vmgum/image/upload/v1685126979/trelandar-fcedbecolor_fmv835.png" height="90" />
 
 ### Slogan goes here
 
