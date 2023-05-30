@@ -4,7 +4,7 @@ export default function Footer() {
   return (
     <footer className="flex flex-col footer footer-center p-8 bg-[#5e5768]">
       <div className="text-center text-md text-[#fcdebe]">
-        <p>Trelander</p>
+        <p>Trelandar</p>
         <p>Copyright © 2023 - All rights reserved</p>
       </div>
       <div>

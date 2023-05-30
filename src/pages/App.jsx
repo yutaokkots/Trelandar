@@ -33,6 +33,7 @@ function App() {
               <Route path="/about" element={<AboutPage />} />
               <Route path="/login" element={<LoginForm />} />
             </Routes>
+            <Footer />
           </>
         ) : (
           <>
@@ -40,7 +41,6 @@ function App() {
           </>
         )}
       </AuthContext.Provider>
-      <Footer />
     </main>
   );
 }
