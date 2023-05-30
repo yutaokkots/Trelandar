@@ -4,7 +4,7 @@
 
 ### Strength in your Week
 
-# Trelander
+# Trelandar
 
 ### Built by: **[Yuta Okkotsu](https://www.linkedin.com/in/yutaokkotsu/)**, **[Eric Hung](https://www.linkedin.com/in/erichungdev/)**, **[Vilem McKael](https://www.linkedin.com/in/vilem-mckael/)**, **[Sally Kam](https://www.linkedin.com/in/sallykam/)**, **[Woonchan Jung](https://www.linkedin.com/in/woonchanjung/)**, & **[Anthony Khong](https://www.linkedin.com/in/anthonykhong956/)**
 
