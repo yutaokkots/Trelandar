@@ -9,7 +9,7 @@ export default function AboutPage() {
             About Us
           </h1>
           <div className="flex justify-center rounded-full bg-slate-300 bg-opacity-50 mx-60 px-28 py-16">
-            <p className="text-[#5e5768]">
+            <p className="text-[#5e5768] p-2">
               At Trelandar, we understand the importance of staying organized
               and on top of your daily tasks. That's why we've created a
               user-friendly website that empowers you to manage your tasks
@@ -59,7 +59,7 @@ export default function AboutPage() {
                       </div>
                       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black group-hover:from-black/70 group-hover:via-black/60 group-hover:to-black/70"></div>
                       <div className="absolute inset-0 flex translate-y-[60%] flex-col items-center justify-center px-9 text-center transition-all duration-500 group-hover:translate-y-0">
-                        <h1 className="text-[#5e5768] text-3xl font-bold">
+                        <h1 className="text-[#FCDEBE] text-3xl font-bold">
                           Yuta Okkotsu
                         </h1>
                         <p className="mb-3 text-lg italic text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">
@@ -101,7 +101,7 @@ export default function AboutPage() {
                       </div>
                       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black group-hover:from-black/70 group-hover:via-black/60 group-hover:to-black/70"></div>
                       <div className="absolute inset-0 flex translate-y-[60%] flex-col items-center justify-center px-9 text-center transition-all duration-500 group-hover:translate-y-0">
-                        <h1 className="text-[#5e5768] text-3xl font-bold">
+                        <h1 className="text-[#FCDEBE] text-3xl font-bold">
                           Eric Hung
                         </h1>
                         <p className="mb-3 text-lg italic text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">
@@ -143,7 +143,7 @@ export default function AboutPage() {
                       </div>
                       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black group-hover:from-black/70 group-hover:via-black/60 group-hover:to-black/70"></div>
                       <div className="absolute inset-0 flex translate-y-[60%] flex-col items-center justify-center px-9 text-center transition-all duration-500 group-hover:translate-y-0">
-                        <h1 className="text-[#5e5768] text-3xl font-bold">
+                        <h1 className="text-[#FCDEBE] text-3xl font-bold">
                           Anthony Khong
                         </h1>
                         <p className="mb-3 text-lg italic text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">
@@ -185,7 +185,7 @@ export default function AboutPage() {
                       </div>
                       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black group-hover:from-black/70 group-hover:via-black/60 group-hover:to-black/70"></div>
                       <div className="absolute inset-0 flex translate-y-[60%] flex-col items-center justify-center px-9 text-center transition-all duration-500 group-hover:translate-y-0">
-                        <h1 className="text-[#5e5768] text-3xl font-bold">
+                        <h1 className="text-[#FCDEBE] text-3xl font-bold">
                           Vilem Mckael
                         </h1>
                         <p className="mb-3 text-lg italic text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">
@@ -228,7 +228,7 @@ export default function AboutPage() {
                       </div>
                       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black group-hover:from-black/70 group-hover:via-black/60 group-hover:to-black/70"></div>
                       <div className="absolute inset-0 flex translate-y-[60%] flex-col items-center justify-center px-9 text-center transition-all duration-500 group-hover:translate-y-0">
-                        <h1 className="text-[#5e5768] text-3xl font-bold">
+                        <h1 className="text-[#FCDEBE] text-3xl font-bold">
                           Sally Kam
                         </h1>
                         <p className="mb-3 text-lg italic text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">
@@ -270,7 +270,7 @@ export default function AboutPage() {
                       </div>
                       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black group-hover:from-black/70 group-hover:via-black/60 group-hover:to-black/70"></div>
                       <div className="absolute inset-0 flex translate-y-[60%] flex-col items-center justify-center px-9 text-center transition-all duration-500 group-hover:translate-y-0">
-                        <h1 className="text-[#5e5768] text-3xl font-bold">
+                        <h1 className="text-[#FCDEBE] text-3xl font-bold">
                           Woonchan Jung
                         </h1>
                         <p className="mb-3 text-lg italic text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">
