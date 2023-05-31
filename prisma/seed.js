@@ -40,13 +40,21 @@ async function main() {
   
 
   ////////////////////
-    const new newTask = await prisma.task.upsert({
-      where: { email: 'bob@prisma.io' },
+  // The following code adds a new Task instance:
+    
+    let startingTime = new Date();
+    let endingTime = new Date(startingTime + 60 * 60 * 1000); //end time 1 hr from now
+    const newTask = await prisma.task.upsert({
+      where: { id: 3 },
       update: {},
       create: {
-        email: 'bob@prisma.io',
-        name: 'Bob',
-        posts: {}
+        notes: 'Mock interview with Darrel',
+        tasktype: {
+          connect: 
+            {id: 2}
+        },
+        startTime: startingTime,
+        endTime: endingTime
       }
     })
 
@@ -72,7 +80,7 @@ async function main() {
   //       },
   //     },
   //   })
-  console.log({ dummyTasks });
+  console.log({ newTask });
 }
 
 main()
