@@ -8,46 +8,19 @@ export default function AboutPage() {
           <h1 className="flex justify-center font-bold text-5xl text-[#5e5768] py-16">
             About Us
           </h1>
-          <div className="flex justify-center rounded-full bg-slate-300 bg-opacity-50 mx-60 px-28 py-16">
-            <p className="text-[#5e5768] p-2">
-              At Trelandar, we understand the importance of staying organized
-              and on top of your daily tasks. That's why we've created a
-              user-friendly website that empowers you to manage your tasks
-              efficiently and effectively.
-              <br /> <br />
-              Our platform revolves around a unique weekly grid system, designed
-              to simplify the way you plan and schedule your activities. With a
-              simple drag and drop functionality, you can easily allocate tasks
-              to specific days and time slots, ensuring that nothing falls
-              through the cracks.
-              <br /> <br />
-              Gone are the days of messy to-do lists and forgotten appointments.
-              Trelandar provides you with a clear visual representation of your
-              week, allowing you to see your commitments at a glance. Whether
-              you're a busy professional, a student, or a homemaker, our
-              intuitive interface makes it easy to prioritize, reschedule, and
-              track your progress.
-              <br /> <br />
-              We believe that productivity should be accessible to everyone,
-              which is why Trelandar is designed to be flexible and
-              customizable. Tailor your grid to match your unique workflow and
-              preferences. Whether you prefer a traditional 9-to-5 schedule or a
-              more dynamic approach, our platform adapts to your needs.
-              <br /> <br />
-              Start your journey with Trelandar today and experience the power
-              of efficient task management. Say goodbye to chaos and hello to
-              productivity!
+          <div className="justify-center rounded-full bg-white border-4 border-[#5e5768] bg-opacity-50 mx-60 px-28 py-10">
+            <p className="text-[#5e5768] ">
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;At Trelandar, we've built a user-friendly website to help you stay organized and manage your tasks efficiently. Our unique weekly grid system simplifies planning and scheduling, with drag and drop functionality to allocate tasks. Say goodbye to messy to-do lists and forgotten appointments. Trelandar provides a clear visual representation of your week, allowing you to prioritize, reschedule, and track progress easily. Our platform is flexible and customizable, adapting to your workflow and preferences. Start your journey with Trelandar today and embrace efficient task management for a more productive life.
             </p>
           </div>
-        </div>
         <div>
-          <h1 className="flex justify-center font-bold text-3xl text-[#5e5768] py-14">
+            
+        <h1 className="flex justify-center font-bold text-3xl text-[#5e5768] py-14">
             Meet the Team
           </h1>
-
-            
               <div className="flex  items-center justify-center pb-10">
-                <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-4">
+                
+                <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
            
                     <div className="group relative cursor-pointer items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30">
                       <div className="h-96 w-72">
@@ -303,11 +276,9 @@ export default function AboutPage() {
                 
                 </div>
               </div>
-            
-
-
-
           
+        </div>
+
         </div>
       </div>
       <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
