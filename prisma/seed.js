@@ -31,56 +31,124 @@ async function main() {
     //   update: {},
     //   create: {
     //     name: 'Interview Prep',
-    //     detail: 'practicing interview questions questions',
+    //     detail: 'practicing interview questions',
     //     color: '#FFFFFF',
     //     userId: 2,
     //   },
     // })
-  ////////////////////
+  //////////////////
+
+//   const dummyTaskCategory2 = await prisma.TaskCategory.upsert({
+//     where: { id: 3 },
+//     update: {},
+//     create: {
+//       name: 'Fitness',
+//       detail: 'Exercise and workout routines',
+//       color: '#00FF00',
+//       userId: 2,
+//     },
+//   });
   
+//   const dummyTaskCategory3 = await prisma.TaskCategory.upsert({
+//     where: { id: 4 },
+//     update: {},
+//     create: {
+//       name: 'Project Management',
+//       detail: 'Managing projects and tasks',
+//       color: '#FFA500',
+//       userId: 2, 
+//     },
+//   });
+
+//   const dummyTaskCategory4 = await prisma.TaskCategory.upsert({
+//   where: { id: 5 },
+//   update: {},
+//   create: {
+//     name: 'Home Improvement',
+//     detail: 'Tasks related to home renovation and repairs',
+//     color: '#FF0000',
+//     userId: 2,
+//   },
+// });
+
 
   ////////////////////
   // The following code adds a new Task instance:
-    
-    let startingTime = new Date();
-    let endingTime = new Date(startingTime + 60 * 60 * 1000); //end time 1 hr from now
-    const newTask = await prisma.task.upsert({
-      where: { id: 3 },
-      update: {},
-      create: {
-        notes: 'Mock interview with Darrel',
-        tasktype: {
-          connect: 
-            {id: 2}
-        },
-        startTime: startingTime,
-        endTime: endingTime
-      }
-    })
+    // let currentTime = new Date().getTime()
+    // let startingTime = new Date(currentTime + 42* 60 * 60 * 1000)
+    // let endingTime = new Date(currentTime + 48 * 60 * 60 * 1000); //end time 1 hr from now
+    // // let currentTime = new Date()
+    // // let startingTime = new Date(currentTime.setHours(48))
+    // // let endingTime = new Date(currentTime.setHours(49))
+    // console.log(startingTime)
+    // console.log(endingTime)
+    // const newTask = await prisma.task.upsert({
+    //   where: { id: 7 },
+    //   update: {},
+    //   create: {
+    //     notes: 'review leetcode problem with Randy',
+    //     tasktype: {
+    //       connect: 
+    //         {id: 1}
+    //     },
+    //     startTime: startingTime,
+    //     endTime: endingTime
+    //   }
+    // })
 
-  //   const bob = await prisma.task.upsert({
-  //     where: { email: 'bob@prisma.io' },
-  //     update: {},
-  //     create: {
-  //       email: 'bob@prisma.io',
-  //       name: 'Bob',
-  //       posts: {
-  //         create: [
-  //           {
-  //             title: 'Follow Prisma on Twitter',
-  //             content: 'https://twitter.com/prisma',
-  //             published: true,
-  //           },
-  //           {
-  //             title: 'Follow Nexus on Twitter',
-  //             content: 'https://twitter.com/nexusgql',
-  //             published: true,
-  //           },
-  //         ],
-  //       },
-  //     },
-  //   })
-  console.log({ newTask });
+let currentTime = new Date().getTime()
+const taskType3StartTime2 = new Date(currentTime + 33* 60 * 60 * 1000); // Use your own logic to generate a random startTime
+const taskType3EndTime2 = new Date(taskType3StartTime2.getTime() + 60 * 60 * 1000);
+
+const dummyTask2 = await prisma.task.upsert({
+  where: { id: 11 },
+  update: {},
+  create: {
+    notes: 'Discuss project number 2 with the team',
+    tasktype: {
+      connect: { id: 3 },
+    },
+    startTime: taskType3StartTime2,
+    endTime: taskType3EndTime2,
+  },
+});
+
+const taskType3StartTime3 = new Date(currentTime + 30* 60 * 60 * 1000); // Use your own logic to generate a random startTime
+const taskType3EndTime3 = new Date(taskType3StartTime3.getTime() + 60 * 60 * 1000);
+
+const dummyTask3 = await prisma.task.upsert({
+  where: { id: 12 },
+  update: {},
+  create: {
+    notes: 'Prepare presentation for other client',
+    tasktype: {
+      connect: { id: 3 },
+    },
+    startTime: taskType3StartTime3,
+    endTime: taskType3EndTime3,
+  },
+});
+
+const taskType3StartTime4 = new Date(currentTime + 35* 60 * 60 * 1000); // Use your own logic to generate a random startTime
+const taskType3EndTime4 = new Date(taskType3StartTime4.getTime() + 60 * 60 * 1000);
+
+const dummyTask4 = await prisma.task.upsert({
+  where: { id: 13 },
+  update: {},
+  create: {
+    notes: 'Attend training session on GitHub',
+    tasktype: {
+      connect: { id: 3 },
+    },
+    startTime: taskType3StartTime4,
+    endTime: taskType3EndTime4,
+  },
+});
+
+
+
+  console.log( dummyTask2, dummyTask3, dummyTask4)
+  //console.log({ dummyTaskCategory2, dummyTaskCategory3, dummyTaskCategory4 });
 }
 
 main()
