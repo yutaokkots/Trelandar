@@ -31,7 +31,7 @@ const tasks = [
 export default function TaskLibrary() {
   return (
     <>
-      <div className="flex flex-col h-[90vh]">
+      <div className="flex flex-col items-center h-[90vh]">
         <div className="flex justify-between items-center px-6 py-3">
         <h2 className="flex items-center text-center">TaskLibrary</h2>
         <button>
@@ -42,7 +42,7 @@ export default function TaskLibrary() {
           return (
             <div
               key={idx}
-              className="hover:bg-[#5E5768] flex flex-row justify-between items-center  w-[12vw] mx-[1vw] my-[1vh] px-[1vmin] py-[1vmin] border-white border-[.1vmin] rounded-[5px]"
+              className="hover:bg-[#5E5768] hover:text-white flex flex-row justify-between items-center  w-[12vw] mx-[1vw] my-[1vh] px-[1vmin] py-[1vmin] border-black border-[.2vmin] rounded-[5px]"
             >
               <TaskItem task={task} />
               <div
