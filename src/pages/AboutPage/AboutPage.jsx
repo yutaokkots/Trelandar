@@ -41,7 +41,7 @@ export default function AboutPage() {
                           labore et dolore magna aliqua.
                         </p>
                         <div className="flex">
-                          <button className="rounded-full bg-neutral-900 py-2 px-3.5 text-sm capitalize text-white hover:text-purple-500 shadow shadow-black/60">
+                          <button className="rounded-full bg-[#5e5768] py-2 px-3.5 text-sm capitalize text-white hover:text-[#FCDEBE] shadow shadow-black/60">
                             <a
                               target="_blank"
                               rel="noreferrer"
@@ -50,7 +50,7 @@ export default function AboutPage() {
                               Github
                             </a>
                           </button>
-                          <button className="rounded-full bg-neutral-900 py-2 px-3.5 text-sm capitalize text-white hover:text-purple-500 shadow shadow-black/60">
+                          <button className="rounded-full bg-[#5e5768] py-2 px-3.5 text-sm capitalize text-white hover:text-[#FCDEBE] shadow shadow-black/60">
                             <a
                               target="_blank"
                               rel="noreferrer"
@@ -83,7 +83,7 @@ export default function AboutPage() {
                           labore et dolore magna aliqua.
                         </p>
                         <div className="flex justify-even">
-                          <button className="rounded-full bg-neutral-900 py-2 px-3.5 text-sm capitalize text-white hover:text-purple-500 shadow shadow-black/60">
+                          <button className="rounded-full bg-[#5e5768] py-2 px-3.5 text-sm capitalize text-white hover:text-[#FCDEBE] shadow shadow-black/60">
                             <a
                               target="_blank"
                               rel="noreferrer"
@@ -92,7 +92,7 @@ export default function AboutPage() {
                               Github
                             </a>
                           </button>
-                          <button className="rounded-full bg-neutral-900 py-2 px-3.5 text-sm capitalize text-white hover:text-purple-500 shadow shadow-black/60">
+                          <button className="rounded-full bg-[#5e5768] py-2 px-3.5 text-sm capitalize text-white hover:text-[#FCDEBE] shadow shadow-black/60">
                             <a
                               target="_blank"
                               rel="noreferrer"
@@ -125,7 +125,7 @@ export default function AboutPage() {
                           labore et dolore magna aliqua.
                         </p>
                         <div className="flex justify-even">
-                          <button className="rounded-full bg-neutral-900 py-2 px-3.5 text-sm capitalize text-white hover:text-purple-500 shadow shadow-black/60">
+                          <button className="rounded-full bg-[#5e5768] py-2 px-3.5 text-sm capitalize text-white hover:text-[#FCDEBE] shadow shadow-black/60">
                             <a
                               target="_blank"
                               rel="noreferrer"
@@ -134,7 +134,7 @@ export default function AboutPage() {
                               Github
                             </a>
                           </button>
-                          <button className="rounded-full bg-neutral-900 py-2 px-3.5 text-sm capitalize text-white hover:text-purple-500 shadow shadow-black/60">
+                          <button className="rounded-full bg-[#5e5768] py-2 px-3.5 text-sm capitalize text-white hover:text-[#FCDEBE] shadow shadow-black/60">
                             <a
                               target="_blank"
                               rel="noreferrer"
@@ -167,7 +167,7 @@ export default function AboutPage() {
                           labore et dolore magna aliqua.
                         </p>
                         <div className="flex justify-even">
-                          <button className="rounded-full bg-neutral-900 py-2 px-3.5 text-sm capitalize text-white hover:text-purple-500 shadow shadow-black/60">
+                          <button className="rounded-full bg-[#5e5768] py-2 px-3.5 text-sm capitalize text-white hover:text-[#FCDEBE] shadow shadow-black/60">
                             <a
                               target="_blank"
                               rel="noreferrer"
@@ -176,7 +176,7 @@ export default function AboutPage() {
                               Github
                             </a>
                           </button>
-                          <button className="rounded-full bg-neutral-900 py-2 px-3.5 text-sm capitalize text-white hover:text-purple-500 shadow shadow-black/60">
+                          <button className="rounded-full bg-[#5e5768] py-2 px-3.5 text-sm capitalize text-white hover:text-[#FCDEBE] shadow shadow-black/60">
                             <a
                               target="_blank"
                               rel="noreferrer"
@@ -210,7 +210,7 @@ export default function AboutPage() {
                           labore et dolore magna aliqua.
                         </p>
                         <div className="flex">
-                          <button className="rounded-full bg-neutral-900 py-2 px-3.5 text-sm capitalize text-white hover:text-purple-500 shadow shadow-black/60">
+                          <button className="rounded-full bg-[#5e5768] py-2 px-3.5 text-sm capitalize text-white hover:text-[#FCDEBE] shadow shadow-black/60">
                             <a
                               target="_blank"
                               rel="noreferrer"
@@ -219,7 +219,7 @@ export default function AboutPage() {
                               Github
                             </a>
                           </button>
-                          <button className="rounded-full bg-neutral-900 py-2 px-3.5 text-sm capitalize text-white hover:text-purple-500 shadow shadow-black/60">
+                          <button className="rounded-full bg-[#5e5768] py-2 px-3.5 text-sm capitalize text-white hover:text-[#FCDEBE] shadow shadow-black/60">
                             <a
                               target="_blank"
                               rel="noreferrer"
@@ -252,7 +252,7 @@ export default function AboutPage() {
                           labore et dolore magna aliqua.
                         </p>
                         <div className="flex">
-                          <button className="rounded-full bg-neutral-900 py-2 px-3.5 text-sm capitalize text-white hover:text-purple-500 shadow shadow-black/60">
+                          <button className="rounded-full bg-[#5e5768] py-2 px-3.5 text-sm capitalize text-white hover:text-[#FCDEBE] shadow shadow-black/60">
                             <a
                               target="_blank"
                               rel="noreferrer"
@@ -261,7 +261,7 @@ export default function AboutPage() {
                               Github
                             </a>
                           </button>
-                          <button className="rounded-full bg-neutral-900 py-2 px-3.5 text-sm capitalize text-white hover:text-purple-500 shadow shadow-black/60">
+                          <button className="rounded-full bg-[#5e5768] py-2 px-3.5 text-sm capitalize text-white hover:text-[#FCDEBE] shadow shadow-black/60">
                             <a
                               target="_blank"
                               rel="noreferrer"
