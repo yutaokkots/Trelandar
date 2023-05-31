@@ -30,7 +30,7 @@ export default function AboutPage() {
             <div className="h-96 w-72">
               <img
                 className="h-full w-full object-cover transition-transform duration-500 group-hover:rotate-3 group-hover:scale-125"
-                src="https://res.cloudinary.com/diw7vmgum/image/upload/v1682897191/341935091_933990431174626_1981406993847747898_n_g6ug4s.jpg"
+                src="https://res.cloudinary.com/diw7vmgum/image/upload/v1685493433/yuta_qexcfn.jpg"
                 alt=""
               />
             </div>
@@ -147,7 +147,7 @@ export default function AboutPage() {
             <div className="h-96 w-72">
               <img
                 className="h-full w-full object-cover transition-transform duration-500 group-hover:rotate-3 group-hover:scale-125"
-                src="https://res.cloudinary.com/diw7vmgum/image/upload/v1682899000/May-01-2023_01-56-28_e19no1.gif"
+                src="https://res.cloudinary.com/diw7vmgum/image/upload/v1685493554/vilemplaceholder_vtvq6t.jpg"
                 alt=""
               />
             </div>
@@ -186,7 +186,7 @@ export default function AboutPage() {
             <div className="h-96 w-72">
               <img
                 className="h-full w-full object-cover transition-transform duration-500 group-hover:rotate-3 group-hover:scale-125"
-                src="https://res.cloudinary.com/diw7vmgum/image/upload/v1684192740/login_page_fh0fcw.gif"
+                src="https://res.cloudinary.com/diw7vmgum/image/upload/v1685493386/sal_gs9isq.png"
                 alt=""
               />
             </div>
@@ -225,7 +225,7 @@ export default function AboutPage() {
             <div className="h-96 w-72">
               <img
                 className="h-full w-full object-cover transition-transform duration-500 group-hover:rotate-3 group-hover:scale-125"
-                src="https://res.cloudinary.com/diw7vmgum/image/upload/v1684192740/login_page_fh0fcw.gif"
+                src="https://res.cloudinary.com/dqdn7rpbn/image/upload/v1685493601/woon_tfse9k.jpg"
                 alt=""
               />
             </div>
