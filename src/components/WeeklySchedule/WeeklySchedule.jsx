@@ -6,7 +6,7 @@ import * as tasksAPI from '../../utilities/tasks-api'
 
 // from datetime import date
 
-export default function WeeklySchedule() {
+export default function WeeklySchedule({categories}) {
 
   const weekdayNames = [
     'Monday',
@@ -90,7 +90,7 @@ export default function WeeklySchedule() {
       <div>ERIC'S BANK PIN IS 4073</div>
       :
       <>
-      {days.map((day, idx) => <Weekday tasks={day.tasks} day={day.day} key={idx}/>)
+      {days.map((day, idx) => <Weekday tasks={day.tasks} categories={categories} day={day.day} key={idx}/>)
       }
       </>
       }

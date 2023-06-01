@@ -23,7 +23,7 @@ function App() {
   //   }
 
   return (
-    <main>
+    <main className="bg-[#FCDEBE]">
       <AuthContext.Provider value={{ user, setUser }}>
         {user ? (
           <>
