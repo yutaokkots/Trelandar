@@ -16,6 +16,8 @@ require('./config/passport');
 
 const userRouter = require('./routes/users')
 const indexRouter = require('./routes/index.js')
+const tasksRouter = require('./routes/tasks')
+
 
 const prisma = new PrismaClient();
 
@@ -49,6 +51,7 @@ console.log('here in the server.js')
 app.use('/api/auth', userRouter);
 //app.use('/api/auth', indexRouter);
 //app.use('/', );
+app.use('/api/tasks', tasksRouter);
 
 
 // catch-all route

@@ -28,6 +28,10 @@ const tasks = [
   },
 ];
 
+const dummy_taskCategories = [
+  
+]
+
 export default function TaskLibrary() {
   return (
     <>

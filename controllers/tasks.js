@@ -4,7 +4,8 @@ const prisma = new PrismaClient();
 // getAll() -> retrieves all task categories for a given user
 // find the userid of the user that is logged in
 // get the tasks
-async function getAll(req, res){
+async function getCategories(req, res){
+    console.log('we are in the controller function')
     try {
         const allTasks = await prisma.TaskCategory.getAll({
             where: {
@@ -83,7 +84,7 @@ async function editTask(req, res){
 
 module.exports = {
     createTaskCategory,
-    getAll,
+    getCategories,
     createTask,
     editTask
 }
