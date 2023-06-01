@@ -5,17 +5,30 @@ const prisma = new PrismaClient();
 // find the userid of the user that is logged in
 // get the tasks
 async function getCategories(req, res){
-    console.log('we are in the controller function')
     try {
-        const allTasks = await prisma.TaskCategory.getAll({
+        const allCategories = await prisma.TaskCategory.findMany({
             where: {
-                user: req.user.id // <- this code is not correct
+                userId: 2
+            }
+        })
+        res.json(allCategories)
+    } catch(error) {
+        console.log(error)
+        res.status(400).json('Could not process')
+    }
+}
+
+async function getTasks(req, res) {
+    try {
+        const allTasks = await prisma.Task.findMany({
+            where: {
+                tasktypeId: 1
             }
         })
         res.json(allTasks)
     } catch(error) {
         console.log(error)
-        res.status(400).json('Could not process')
+        res.status(400).json('Could not process for tasks')
     }
 }
 
@@ -85,6 +98,7 @@ async function editTask(req, res){
 module.exports = {
     createTaskCategory,
     getCategories,
+    getTasks,
     createTask,
     editTask
 }
