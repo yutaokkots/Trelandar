@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const tasksCtrl = require('../controllers/tasks.js');
 
+//server.js app.use is referencing /api/tasks
+
 ////////// Task Categories
 // GET
 // api/tasks/getAll
@@ -9,7 +11,7 @@ const tasksCtrl = require('../controllers/tasks.js');
 // -> get all task categories
 // -> this function will retreive all of the user's task categories
 // ane make sure it is refreshed via a state change
-router.get('getall', tasksCtrl.getAll)
+router.get('getcategories', tasksCtrl.getCategories)
 
 
 // POST
