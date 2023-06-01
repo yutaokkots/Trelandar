@@ -22,7 +22,7 @@ async function getTasks(req, res) {
     try {
         const allTasks = await prisma.Task.findMany({
             where: {
-                tasktypeId: 1
+                tasktypeId: 3
             }
         })
         res.json(allTasks)

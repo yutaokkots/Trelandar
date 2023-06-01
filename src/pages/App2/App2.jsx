@@ -10,7 +10,7 @@ import LoginForm from "../../components/LoginForm/LoginForm";
 function App() {
   const [user, setUser] = useState();
   return (
-    <main>
+    <main >
         <NavBar user={user} setUser={setUser} />
         <Routes>
             <Route path="/" element={<Calendar />} />

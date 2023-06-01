@@ -97,14 +97,14 @@ async function main() {
     // })
 
 let currentTime = new Date().getTime()
-const taskType3StartTime2 = new Date(currentTime + 33* 60 * 60 * 1000); // Use your own logic to generate a random startTime
+const taskType3StartTime2 = new Date(currentTime + 40* 60 * 60 * 1000); // Use your own logic to generate a random startTime
 const taskType3EndTime2 = new Date(taskType3StartTime2.getTime() + 60 * 60 * 1000);
 
 const dummyTask2 = await prisma.task.upsert({
-  where: { id: 11 },
+  where: { id: 14 },
   update: {},
   create: {
-    notes: 'Discuss project number 2 with the team',
+    notes: 'walk for 2 miles',
     tasktype: {
       connect: { id: 3 },
     },
@@ -113,39 +113,37 @@ const dummyTask2 = await prisma.task.upsert({
   },
 });
 
-const taskType3StartTime3 = new Date(currentTime + 30* 60 * 60 * 1000); // Use your own logic to generate a random startTime
+const taskType3StartTime3 = new Date(currentTime + 42* 60 * 60 * 1000); // Use your own logic to generate a random startTime
 const taskType3EndTime3 = new Date(taskType3StartTime3.getTime() + 60 * 60 * 1000);
 
 const dummyTask3 = await prisma.task.upsert({
-  where: { id: 12 },
+  where: { id: 15 },
   update: {},
   create: {
-    notes: 'Prepare presentation for other client',
+    notes: 'Overview of next steps',
     tasktype: {
-      connect: { id: 3 },
+      connect: { id: 4 },
     },
     startTime: taskType3StartTime3,
     endTime: taskType3EndTime3,
   },
 });
 
-const taskType3StartTime4 = new Date(currentTime + 35* 60 * 60 * 1000); // Use your own logic to generate a random startTime
+const taskType3StartTime4 = new Date(currentTime + 44* 60 * 60 * 1000); // Use your own logic to generate a random startTime
 const taskType3EndTime4 = new Date(taskType3StartTime4.getTime() + 60 * 60 * 1000);
 
 const dummyTask4 = await prisma.task.upsert({
-  where: { id: 13 },
+  where: { id: 16 },
   update: {},
   create: {
-    notes: 'Attend training session on GitHub',
+    notes: 'Fix faucet',
     tasktype: {
-      connect: { id: 3 },
+      connect: { id: 5 },
     },
     startTime: taskType3StartTime4,
     endTime: taskType3EndTime4,
   },
 });
-
-
 
   console.log( dummyTask2, dummyTask3, dummyTask4)
   //console.log({ dummyTaskCategory2, dummyTaskCategory3, dummyTaskCategory4 });
