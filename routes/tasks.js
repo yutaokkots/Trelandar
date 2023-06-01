@@ -11,7 +11,11 @@ const tasksCtrl = require('../controllers/tasks.js');
 // -> get all task categories
 // -> this function will retreive all of the user's task categories
 // ane make sure it is refreshed via a state change
-router.get('getcategories', tasksCtrl.getCategories)
+router.get('/getcategories', tasksCtrl.getCategories)
+
+
+// -> get all tasks
+router.get('/gettasks', tasksCtrl.getTasks)
 
 
 // POST
@@ -41,3 +45,5 @@ router.post('/:id/task/create', tasksCtrl.createTask)
 // the start time, and end time, as well as whether the
 // task is completed or not
 router.put('/:id/task/edit', tasksCtrl.editTask)
+
+module.exports = router;

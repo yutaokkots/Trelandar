@@ -15,7 +15,7 @@ require('./config/passport');
 // SECRET=SEICOOL
 
 const userRouter = require('./routes/users')
-const indexRouter = require('./routes/index.js')
+// const indexRouter = require('./routes/index.js')
 const tasksRouter = require('./routes/tasks')
 
 
@@ -46,12 +46,10 @@ app.use(function( req, res, next) {
   next();
 });
 
-console.log('here in the server.js')
-
 app.use('/api/auth', userRouter);
+app.use('/api/tasks', tasksRouter);
 //app.use('/api/auth', indexRouter);
 //app.use('/', );
-app.use('/api/tasks', tasksRouter);
 
 
 // catch-all route
