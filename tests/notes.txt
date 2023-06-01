@@ -1,0 +1,14 @@
+Documentation:
+    https://jestjs.io/docs/getting-started
+installation:
+    % npm install --save-dev jest
+
+
+List of tests:
+    https://jestjs.io/docs/api
+
+In order to run a test:
+    1) create a test in a file: 
+        file_name.test.js
+    2) run the following (see package.json to see where 'test' was configured)
+        % npm test
