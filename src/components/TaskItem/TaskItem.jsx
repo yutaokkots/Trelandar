@@ -1,5 +1,7 @@
 import React from "react";
 
 export default function TaskItem({task}) {
-  return <div className=" text-[12px]">{task.notes}</div>;
+  return (
+  <div className=" text-[12px]" >{task.notes}</div>
+  );
 }
