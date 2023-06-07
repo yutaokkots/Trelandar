@@ -13,7 +13,7 @@ export default function Weekday({tasks, day, categories}) {
         </button> */}
         {tasks.map((task, idx) => {
           const category = categories.find((category) => category.id === task.tasktypeId);
-          return <div key={idx} style={{borderColor: category.color}} className='category-element   bg-white-900/20 hover:bg-[#5E5768] text-black hover:text-white flex flex-row justify-between items-center w-[10.5vw] my-[1vh] px-[1vmin] py-[1vmin] border-[.2vmin] rounded-[5px] shadow-2xl sm:rounded-xl bg-clip-padding  text-[12px] backdrop-filter backdrop-blur-customsm ' >
+          return <div key={idx} style={{borderColor: category.color}} className="category-element  bg-opacity-20 bg-${category.color} bg-white-900/20 hover:bg-[#5E5768] text-black hover:text-white flex flex-row justify-between items-center w-[10.5vw] my-[1vh] px-[1vmin] py-[1vmin] border-[.2vmin] rounded-[5px] shadow-2xl sm:rounded-lg bg-clip-padding  text-[12px] backdrop-filter backdrop-blur-customsm" >
           <TaskItem task={task} key={task.id}/>
           </div>})}
         <DailySchedule />
