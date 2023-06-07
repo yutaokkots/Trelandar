@@ -4,24 +4,6 @@ import WeeklySchedule from "../../components/WeeklySchedule/WeeklySchedule";
 import { useState, useEffect } from "react";
 import * as tasksAPI from '../../utilities/tasks-api'
 
-import {
-  DndContext, 
-  closestCenter,
-  KeyboardSensor,
-  PointerSensor,
-  useSensor,
-  useSensors,
-} from '@dnd-kit/core';
-import {
-  arrayMove,
-  SortableContext,
-  sortableKeyboardCoordinates,
-  verticalListSortingStrategy,
-} from '@dnd-kit/sortable';
-
-import CategoryItemDnD from '../../components/CategoryItem/CategoryItemDnD'
-
-
 export default function Calendar() {
 
   const [categories, setCategories] = useState([]);
@@ -41,19 +23,7 @@ export default function Calendar() {
     fetchTaskCategories();
   }, []);
 
-  const sensors = useSensors(
-    useSensor(PointerSensor),
-    useSensor(KeyboardSensor, {
-      coordinateGetter: sortableKeyboardCoordinates,
-    })
-  )
-
   return (
-    <DndContext
-      sensors={sensors}
-      collisionDetection={closestCenter}
-      onDragEnd={handleDragEnd}
-    >
     <main>
       <div className="bg-[#FCDEBE] flex flex-row items-center justify-center" >
         <div className=" w-[14vw] h-[90vh] m-[0.4vmin] mr-[1vmin] rounded-lg bg-white border-4 border-[#5e5768] bg-opacity-80  " >
@@ -64,19 +34,5 @@ export default function Calendar() {
         </div>
       </div>
     </main>
-    </DndContext>
   );
-}
-
-function handleDragEnd(event) {
-  const {active, over} = event;
-  
-  if (active.id !== over.id) {
-    setItems((items) => {
-      const oldIndex = items.indexOf(active.id);
-      const newIndex = items.indexOf(over.id);
-      
-      return arrayMove(items, oldIndex, newIndex);
-    });
-  }
 }
