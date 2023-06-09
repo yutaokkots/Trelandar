@@ -47,6 +47,8 @@ export default function Calendar() {
       coordinateGetter: sortableKeyboardCoordinates,
     })
   )
+    // 0 = 'task library'; 1 = 'Sunday'; 
+    // [[],[],[],[],[],[],[],[],[],]
 
   return (
     <DndContext
@@ -54,16 +56,25 @@ export default function Calendar() {
       collisionDetection={closestCenter}
       onDragEnd={handleDragEnd}
     >
-    <main>
-      <div className="bg-[#FCDEBE] flex flex-row items-center justify-center" >
-        <div className=" w-[14vw] h-[90vh] m-[0.4vmin] mr-[1vmin] rounded-lg bg-white border-4 border-[#5e5768] bg-opacity-80  " >
-          <TaskLibrary categories={categories} />
-        </div>
-        <div className="items-center w-[84vw] h-[90vh] m-[1vmin] ml-[0] rounded-[1vmin]">
-          <WeeklySchedule categories={categories}/>
-        </div>
-      </div>
-    </main>
+
+
+
+
+      <main>
+      {/* <SortableContext
+            items={categories}
+            strategy={verticalListSortingStrategy}
+          > */}
+          <div className="bg-[#FCDEBE] flex flex-row items-center justify-center" >
+            <div className=" w-[14vw] h-[90vh] m-[0.4vmin] mr-[1vmin] rounded-lg bg-white border-4 border-[#5e5768] bg-opacity-80  " >
+              <TaskLibrary categories={categories} />
+            </div>
+            <div className="items-center w-[84vw] h-[90vh] m-[1vmin] ml-[0] rounded-[1vmin]">
+              <WeeklySchedule categories={categories}/>
+            </div>
+          </div>
+        {/* </SortableContext> */}
+      </main>
     </DndContext>
   );
 }

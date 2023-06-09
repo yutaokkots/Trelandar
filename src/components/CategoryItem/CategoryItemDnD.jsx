@@ -23,12 +23,11 @@ export default function CategoryItemDnD({ category }) {
 
         style={style} {...attributes} {...listeners}>
     
-        <h1>Category DnD</h1>
+        <h1>{category.name}</h1>
         <div
             style={{ backgroundColor: category.color }}
             className="w-[2vmin] h-[2vmin] bg-[slate-500] rounded-[50%]"
         ></div>
-    
     </div>
   )
 }
