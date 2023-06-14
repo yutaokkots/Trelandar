@@ -1,6 +1,7 @@
 import React from 'react'
 import {useSortable} from '@dnd-kit/sortable';
 import {CSS} from '@dnd-kit/utilities';
+import './CategoryItem.css'
 
 export default function CategoryItemDnD({ category }) {
   const {
@@ -9,7 +10,7 @@ export default function CategoryItemDnD({ category }) {
     setNodeRef,
     transform,
     transition,
-  } = useSortable({id: category.id});
+  } = useSortable({id: category.name});
 
   const style = {
     transform: CSS.Transform.toString(transform),
@@ -18,8 +19,9 @@ export default function CategoryItemDnD({ category }) {
 
   return (
     <div 
+        id='categoryItem'
         ref={setNodeRef} 
-        className="hover:bg-[#5E5768] hover:text-white flex flex-row justify-between items-center  w-[12vw] mx-[1vw] my-[1vh] px-[1vmin] py-[1vmin] border-black border-[.2vmin] rounded-[5px]"
+        className="yolo hover:bg-[#5E5768] hover:text-white flex flex-row justify-between items-center  w-[12vw] mx-[1vw] my-[1vh] px-[1vmin] py-[1vmin] border-black border-[.2vmin] rounded-[5px]"
 
         style={style} {...attributes} {...listeners}>
     

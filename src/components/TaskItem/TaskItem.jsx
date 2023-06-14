@@ -1,24 +1,8 @@
 import React from "react";
-import {useSortable} from '@dnd-kit/sortable';
 import {CSS} from '@dnd-kit/utilities';
 
 
-export default function TaskItem({task, category}) {
-
-  const {
-    attributes,
-    listeners,
-    setNodeRef,
-    transform,
-    transition,
-  } = useSortable({id: category.id});
-
-  const style = {
-    transform: CSS.Transform.toString(transform),
-    transition,
-    borderColor: category.color
-  };
-
+export default function TaskItem({task, category}) {   
 
   function convertTime(time){
     const date = new Date(time)
@@ -34,12 +18,15 @@ export default function TaskItem({task, category}) {
     return strTime
   }
 
+  const style = {
+    borderColor: category.color
+  };
+
   return (
     <>
       <div
-          ref={setNodeRef} 
-          className="category-element bg-opacity-20 bg-${category.color} bg-white-900/20 hover:bg-[#5E5768] text-black hover:text-white flex flex-row justify-between items-center w-[10.5vw] my-[1vh] px-[1vmin] py-[1vmin] border-[.2vmin] rounded-[5px] shadow-2xl sm:rounded-lg bg-clip-padding  text-[12px] backdrop-filter backdrop-blur-customsm" 
-          style={style} {...attributes} {...listeners}
+          className="category-element bg-opacity-20 bg-white-900/20 hover:bg-[#5E5768] text-black hover:text-white flex flex-row justify-between items-center w-[10.5vw] my-[1vh] px-[1vmin] py-[1vmin] border-[.2vmin] rounded-[5px] shadow-2xl sm:rounded-lg bg-clip-padding  text-[12px] backdrop-filter backdrop-blur-customsm" 
+          style={style}
         >
         <div>
           <div>

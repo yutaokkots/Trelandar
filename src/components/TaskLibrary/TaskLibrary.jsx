@@ -3,37 +3,6 @@ import CategoryItem from "../CategoryItem/CategoryItem";
 import CategoryItemDnD from "../CategoryItem/CategoryItemDnD";
 import { SortableContext, verticalListSortingStrategy } from '@dnd-kit/sortable';
 
-const tasks = [
-  {
-    name: "Chores",
-    color: "#9BAADD",
-  },
-  {
-    name: "Work",
-    color: "#95DBDA",
-  },
-  {
-    name: "Lunch",
-    color: "#EAB0E3",
-  },
-  {
-    name: "Dinner",
-    color: "#F0A8A8",
-  },
-  {
-    name: "Free",
-    color: "#9AE3B7",
-  },
-  {
-    name: "Social",
-    color: "#E6CDA3",
-  },
-];
-
-const dummy_taskCategories = [
-  
-]
-
 export default function TaskLibrary({categories}) {
   return (
     <>
@@ -60,26 +29,25 @@ export default function TaskLibrary({categories}) {
           );
         })} */}
 
-<SortableContext 
-        items={categories}
-        strategy={verticalListSortingStrategy}
-      >
-        <div>
-            {categories.map((category, idx) => {
-              return (
-                <div
-                key={idx}
-                >
-                <CategoryItemDnD category={category} />
-                  <div
-                    style={{ backgroundColor: category.color }}
-                    
-                    ></div>
-                </div>
-              );
-            })}
-        </div>
-        </SortableContext>
+          <SortableContext 
+            items={categories.map((category) => category.name)}
+            strategy={verticalListSortingStrategy}
+          >
+              <div>
+                  {categories.map((category, idx) => {
+                    return (
+                      <div
+                      key={idx}
+                      >
+                      <CategoryItemDnD category={category} />
+                        <div
+                          style={{ backgroundColor: category.color }}
+                          ></div>
+                      </div>
+                    );
+                  })}
+              </div>
+          </SortableContext>
       </div>
      
     </>

@@ -87,7 +87,7 @@ export default function WeeklySchedule({categories}) {
     <>
     <div className=' flex flex-row justify-evenly'>
       {!fetchedTasks ? 
-      <div>ERIC'S BANK PIN IS 4073</div>
+      <div>Calendar loading. . . </div>
       :
       <>
       {days.map((day, idx) => <Weekday tasks={day.tasks} categories={categories} day={day.day} key={idx}/>)
