@@ -1,12 +1,15 @@
 import React from "react";
 import TaskItem from "../TaskItem/TaskItem";
 import Weekday from "../Weekday/Weekday";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import * as tasksAPI from "../../utilities/tasks-api";
+import { UserTasks } from '../../pages/Calendar/Calendar'
 
 // from datetime import date
 
 export default function WeeklySchedule({ categories }) {
+  const { tasks, setTasks } = useContext(UserTasks)
+
   const weekdayNames = [
     "Monday",
     "Tuesday",
@@ -50,7 +53,7 @@ export default function WeeklySchedule({ categories }) {
 
   const [fetchedTasks, setFetchedTasks] = useState(false);
 
-  const [tasks, setTasks] = useState(null);
+  // const [tasks, setTasks] = useState(null);
 
   useEffect(() => {
     async function getAllTasks() {

@@ -3,6 +3,14 @@ import TaskLibrary from "../../components/TaskLibrary/TaskLibrary";
 import WeeklySchedule from "../../components/WeeklySchedule/WeeklySchedule";
 import { useState, useEffect } from "react";
 import * as tasksAPI from '../../utilities/tasks-api'
+import Popup from "reactjs-popup";
+import NewTaskPopup from "../../components/Popups/NewTaskPopup";
+
+// create a new context for storing taskLibrary state and task state:
+import { createContext } from 'react'
+
+export const UserTasks = createContext()
+
 
 import {
   DndContext, 
@@ -24,7 +32,9 @@ import CategoryItemDnD from '../../components/CategoryItem/CategoryItemDnD'
 
 export default function Calendar() {
 
+  // passing the following states to 'UserTasks' context
   const [categories, setCategories] = useState([]);
+  const [tasks, setTasks] = useState(null);
 
   // const [tasks, setTasks] = useState([]);
 
@@ -109,29 +119,32 @@ export default function Calendar() {
 
 
   return (
-    <DndContext
-      sensors={sensors}
-      collisionDetection={closestCenter}
-      onDragEnd={handleDragEnd}
-      onDragOver={handleDragOver}
+    <UserTasks.Provider
+        value={{ categories, setCategories, tasks, setTasks }}>
+        <DndContext
+          sensors={sensors}
+          collisionDetection={closestCenter}
+          onDragEnd={handleDragEnd}
+          onDragOver={handleDragOver}
 
-    >
-      <main>
-      {/* <SortableContext
-            items={categories}
-            strategy={verticalListSortingStrategy}
-          > */}
-          <div className="bg-[#FCDEBE] flex flex-row items-center justify-center" >
-            <div id='categoryContainer' className=" w-[14vw] h-[90vh] m-[0.4vmin] mr-[1vmin] rounded-lg bg-white border-4 border-[#5e5768] bg-opacity-80  " >
-              <TaskLibrary categories={categories} />
-            </div>
-            <div className="items-center w-[84vw] h-[90vh] m-[1vmin] ml-[0] rounded-[1vmin]">
-              <WeeklySchedule categories={categories}/>
-            </div>
-          </div>
-        {/* </SortableContext> */}
-      </main>
-    </DndContext>
+        >
+          <main>
+          {/* <SortableContext
+                items={categories}
+                strategy={verticalListSortingStrategy}
+              > */}
+              <div className="bg-[#FCDEBE] flex flex-row items-center justify-center" >
+                <div id='categoryContainer' className=" w-[14vw] h-[90vh] m-[0.4vmin] mr-[1vmin] rounded-lg bg-white border-4 border-[#5e5768] bg-opacity-80  " >
+                  <TaskLibrary categories={categories} />
+                </div>
+                <div className="items-center w-[84vw] h-[90vh] m-[1vmin] ml-[0] rounded-[1vmin]">
+                  <WeeklySchedule categories={categories}/>
+                </div>
+              </div>
+            {/* </SortableContext> */}
+          </main>
+        </DndContext>
+    </UserTasks.Provider>
   );
 }
 

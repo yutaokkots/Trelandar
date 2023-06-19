@@ -1,4 +1,4 @@
-import React from "react";
+
 import CategoryItem from "../CategoryItem/CategoryItem";
 import CategoryItemDnD from "../CategoryItem/CategoryItemDnD";
 import {
@@ -8,6 +8,7 @@ import {
 import Popup from "reactjs-popup";
 import NewTaskPopup from "../Popups/NewTaskPopup";
 import "../Popups/Modal.css";
+
 export default function TaskLibrary({ categories }) {
   return (
     <>
@@ -56,9 +57,13 @@ export default function TaskLibrary({ categories }) {
         trigger={
           <button className="modal border border-indigo-500"> Trigger</button>
         }
+        modal
+        nested
         position="center center"
       >
+        {/* {close => ( */}
         <NewTaskPopup />
+        {/* )} */}
       </Popup>
     </>
   );
